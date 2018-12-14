@@ -1,7 +1,7 @@
-import home from "../home/components/home";
+import Home from "../home/components/Home";
 
 
 export default {
     path: "/home",
-    component: home
+    component: Home
 }

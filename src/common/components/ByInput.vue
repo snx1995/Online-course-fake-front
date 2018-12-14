@@ -14,7 +14,8 @@ export default {
     props: { 
         validateRule: {
             type: Object,   // validateRule = {check() {...}, tip: ""}
-            required: false
+            required: false,
+            default: () => new Object()
         },
         type: {
             type: String,
@@ -53,20 +54,23 @@ export default {
     box-shadow: none;
 }
 .by-input {
-    margin: 20px 20px;
+    margin: 10px;
+    display: inline-block;
+    width: fill-available;
     .input-wrapper {
         height: @inputHeight;
         width: 100%;
         input {
             .input-style();
-            border-radius: @inputHeight / 2;
+            background-color: rgb(242, 242, 242);
+            border-radius: 10px;
             font-size: 1em;
             padding: 0 @inputHeight / 2;
             display: block;
             box-sizing: border-box;
             width: 100%;
             height: 100%;
-            border: 1px solid #555;
+            border: none;
             &:focus {
                 border: 1px solid rgb(242, 13, 13);
             }

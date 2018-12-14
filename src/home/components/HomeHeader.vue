@@ -8,6 +8,8 @@
       <div class="links">实战课程</div>
       <div class="links">就业班</div>
       <div class="links">博客</div>
+      <div class="links">问答</div>
+      <div class="links">直播</div>
     </div>
     <div class="container">
       <div v-if="!isOnline" class="login-pane">
@@ -16,7 +18,7 @@
         <span><a href="#" @click="$emit('register')">注册</a></span>
       </div>
       <div v-if="isOnline" class="online-pane">
-        <span><a href="#">登录用户</a></span>
+        <span><a href="#">{{loginUser}}</a></span>
       </div>
     </div>
   </div>
@@ -30,6 +32,11 @@
       return {
 
       }
+    },
+    computed: {
+      loginUser() {
+          return this.$cookies.get("userName");
+      }
     }
   }
 </script>
@@ -37,10 +44,13 @@
 <style lang="less" scoped>
   @headerHeight: 80px;
   .header {
+    background-color: #fff;
     color: #5d5d5d;
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-width: 800px;
+    min-width: 1000px;
     height: @headerHeight;
     display: flex;
     align-items: center;

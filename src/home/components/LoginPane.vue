@@ -4,21 +4,28 @@
         <div class="login-pane" @click="$emit('close')"></div>
         <div class="pane">
           <div class="header">
-            <span :class="{active: type == 0}"><a href="#" @click="switchTo(0)">登录</a></span>
+            <span :class="{active: value == 'login'}"><a href="#" @click="switchTo('login')">登录</a></span>
             <span>|</span>
-            <span :class="{active: type == 1}"><a href="#" @click="switchTo(1)">注册</a></span>
+            <span :class="{active: value == 'register'}"><a href="#" @click="switchTo('register')">注册</a></span>
           </div>
           <div class="body">
-            <div class="login" v-show="type == 0">
+            <div class="login" v-show="value == 'login'">
               <ByInput :validate-rule="validateRules.account" placeholder="您的账号或者邮箱" @invalid="log('invalid')" v-model="account" />
               <ByInput :validate-rule="validateRules.password" placeholder="您的密码" :type="'password'" @invalid="log('invalid')" v-model="password" />
             </div>
-            <div class="register" v-show="type == 1">
-              <h1>register</h1>
+            <div class="register" v-show="value == 'register'">
+              <by-input placeholder="email" v-model="email" />
+              <by-input placeholder="password" type="password" v-model="passwd" />
+              <by-input placeholder="password confirm" type="password" v-model="passwdConfirm" />
+              <by-input placeholder="验证码" v-model="validateCode"/>
             </div>
           </div>
-          <div class="footer">
+          <div class="footer" v-show="value == 'login'">
             <by-button @click.native="login">确认</by-button>
+            <by-button @click.native="$emit('close')">取消</by-button>
+          </div>
+          <div class="footer" v-show="value == 'register'">
+            <by-button @click.native="login">注册<i class="icon-account_box"></i></by-button>
             <by-button @click.native="$emit('close')">取消</by-button>
           </div>
         </div>
@@ -27,17 +34,22 @@
 </template>
 
 <script>
-    import ByInput from "./ByInput";
-    import ByButton from "./ByButton";
+    import ByInput from "../../common/components/ByInput";
+    import ByButton from "../../common/components/ByButton";
     import axios from "axios";
     export default {
       name: "LoginPane",
       components: {ByInput, ByButton},
+      props: ["page", "value"],
       data() {
         return {
-          type: 0,
           account: "",
           password: "",
+          name: "",
+          email: "",
+          passwd: "",
+          passwdConfirm: "",
+          validateCode: "",
           validateRules: {
             account: {
               check(value) {
@@ -56,13 +68,13 @@
       },
       methods: {
         switchTo(tab) {
-          this.type = tab;
+          this.$emit("input", tab);
         },
         log(...info) {
           console.log(...info);
         },
         login() {
-          let $this = this;
+          let $this = this; 
           axios.get("/action/authority/login.action", {
             params: {
               account: $this.account,
@@ -70,6 +82,14 @@
             }
           }).then(response => {
             console.log(response);
+            let user;
+            if (response.data.status == 200) {
+              user = response.data.data;
+              this.$cookies.set("token", user.token);
+              this.$cookies.set("userName", user.name);
+              this.$emit("success", "login");
+            } else alert(response.data.data);
+            this.$emit("close");
           })
         }
       }
@@ -78,16 +98,19 @@
 
 <style scoped lang="less">
   .login-container {
+    z-index: 2000;
     width: 100%;
     height: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     .login-pane {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .pane {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .pane {
       width: 450px;
       background-color: white;
       position: absolute;
@@ -116,7 +139,7 @@
         }
       }
       .body {
-        margin-top: 60px;
+        margin: 30px 0 10px 0;
       }
       .footer {
         margin: 0 2em;
