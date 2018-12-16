@@ -17,12 +17,12 @@ export default {
 </script>
 <style lang="less" scoped>
     .home-banner {
+        margin: 0 auto;
         overflow: hidden;
         position: relative;
-        margin: 0 auto;
-        width: 1000px;
+        width: 1200px;
         background-color: white;
-        height: 450px;
+        height: 500px;
         border-radius: 20px;
         box-shadow: 0 12px 24px 0 rgba(7, 17, 27, 0.2)
     }

@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    @bannerWidth: 1000px;
+    @bannerWidth: 1200px;
     @bannerLeftWidth: 220px;
     @bannerBottomHeight: 140px;
     .banner-bottom {

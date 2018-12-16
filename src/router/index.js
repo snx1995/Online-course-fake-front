@@ -8,10 +8,6 @@ Vue.use(VueCookies);
 
 export default new Router({
   routes: [
-    {
-      path: "/",
-      redirect: "/home"
-    },
     home,
   ]
 })

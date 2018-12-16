@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?5r4uug');
-  src:  url('fonts/icomoon.eot?5r4uug#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?5r4uug') format('truetype'),
-    url('fonts/icomoon.woff?5r4uug') format('woff'),
-    url('fonts/icomoon.svg?5r4uug#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?zg4n75');
+  src:  url('fonts/icomoon.eot?zg4n75#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?zg4n75') format('truetype'),
+    url('fonts/icomoon.woff?zg4n75') format('woff'),
+    url('fonts/icomoon.svg?zg4n75#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-search1:before {
+  content: "\f002";
+}
 .icon-check1:before {
   content: "\f00c";
 }
@@ -83,10 +86,6 @@
 }
 .icon-chevron-left1:before {
   content: "\e900";
-}
-.icon-search:before {
-  content: "\e904";
-  color: #555;
 }
 .icon-account_balance:before {
   content: "\e84f";
@@ -553,7 +552,7 @@
 .icon-refresh:before {
   content: "\e5d5";
 }
-.icon-checkmark:before {
+.icon-checkmark1:before {
   content: "\e90a";
 }
 .icon-check-alt:before {
@@ -573,4 +572,67 @@
 }
 .icon-play3:before {
   content: "\ea1c";
+}
+.icon-undo:before {
+  content: "\e965";
+}
+.icon-redo:before {
+  content: "\e966";
+}
+.icon-spinner:before {
+  content: "\e97a";
+}
+.icon-spinner2:before {
+  content: "\e97b";
+}
+.icon-spinner3:before {
+  content: "\e97c";
+}
+.icon-spinner4:before {
+  content: "\e97d";
+}
+.icon-spinner6:before {
+  content: "\e97f";
+}
+.icon-spinner7:before {
+  content: "\e980";
+}
+.icon-spinner8:before {
+  content: "\e981";
+}
+.icon-spinner9:before {
+  content: "\e982";
+}
+.icon-spinner10:before {
+  content: "\e983";
+}
+.icon-spinner11:before {
+  content: "\e984";
+}
+.icon-search:before {
+  content: "\e986";
+}
+.icon-zoom-in:before {
+  content: "\e987";
+}
+.icon-zoom-out:before {
+  content: "\e988";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+.icon-checkmark2:before {
+  content: "\ea11";
+}
+.icon-circle-up:before {
+  content: "\ea41";
+}
+.icon-circle-right:before {
+  content: "\ea42";
+}
+.icon-circle-down:before {
+  content: "\ea43";
+}
+.icon-circle-left:before {
+  content: "\ea44";
 }

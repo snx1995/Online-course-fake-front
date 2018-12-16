@@ -1,27 +1,17 @@
 <template>
     <div class="by-input">
         <div class="input-wrapper">
-            <input :type="type" @input="$emit('input', $event.target.value)" :placeholder="placeholder" @blur="validate">
+            <input type="text" @input="$emit('input', $event.target.value)" :placeholder="placeholder">
+            <div class="search-btn icon-search1" @click="$emit('search')">
+
+            </div>
         </div>
-        <transition name="tips">
-            <span class="tips" v-show="isInvalid">{{validateRule.tips}}</span>
-        </transition>
     </div>
 </template>
 <script>
 export default {
-    name: "ByInput",
-    props: { 
-        validateRule: {
-            type: Object,   // validateRule = {check() {...}, tip: ""}
-            required: false,
-            default: () => new Object()
-        },
-        type: {
-            type: String,
-            required: false,
-            default: "text"
-        },
+    name: "BySearchInput",
+    props: {
         value: {
             type: [String, Number, Boolean]
         },
@@ -32,17 +22,7 @@ export default {
     },
     data() {
         return {
-            isInvalid: false,
-        }
-    },
-    methods: {
-        validate() {
-            if (this.validateRule) {
-                if (this.validateRule.check && !this.validateRule.check(this.value)) {
-                    this.isInvalid = true;
-                    this.$emit("invalid");
-                } else this.isInvalid = false;
-            }
+            
         }
     }
 }
@@ -58,6 +38,7 @@ export default {
     display: inline-block;
     width: fill-available;
     .input-wrapper {
+        position: relative;
         height: @inputHeight;
         width: 100%;
         input {
@@ -73,6 +54,19 @@ export default {
             border: 1px solid transparent;
             &:focus {
                 border: 1px solid rgb(242, 13, 13);
+            }
+        }
+        .search-btn {
+            width: @inputHeight - 10px;
+            height: @inputHeight - 10px;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            line-height: @inputHeight - 10px;
+            text-align: center;
+            color: #5d5d5d;
+            &:hover {
+                color: rgb(242, 13, 13);
             }
         }
     }

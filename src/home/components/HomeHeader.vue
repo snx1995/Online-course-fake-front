@@ -4,12 +4,15 @@
       <img src="../../../static/default.jpg" alt="fake-front-logo">
     </div>
     <div class="link-list">
-      <div class="links">免费课程</div>
-      <div class="links">实战课程</div>
-      <div class="links">就业班</div>
-      <div class="links">博客</div>
-      <div class="links">问答</div>
-      <div class="links">直播</div>
+      <div class="link">免费课程</div>
+      <div class="link">实战课程</div>
+      <div class="link">就业班</div>
+      <div class="link">博客</div>
+      <div class="link">问答</div>
+      <div class="link">直播</div>
+      <div class="search-content">
+        <by-search-input placeholder="搜索fake-front" v-model="keyword" @search="search"/>
+      </div>
     </div>
     <div class="container">
       <div v-if="!isOnline" class="login-pane">
@@ -25,17 +28,24 @@
 </template>
 
 <script>
+  import BySearchInput from "../../common/components/BySearchInput";
   export default {
     name: "HomeHeader",
     props: ["isOnline"],
+    components: {BySearchInput},
     data() {
       return {
-
+        keyword: ""
       }
     },
     computed: {
       loginUser() {
           return this.$cookies.get("userName");
+      }
+    },
+    methods: {
+      search() {
+        alert("search" + this.keyword);
       }
     }
   }
@@ -50,7 +60,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    min-width: 1000px;
+    min-width: 1366px;
     height: @headerHeight;
     display: flex;
     align-items: center;
@@ -69,7 +79,7 @@
     .link-list {
       display: flex;
       align-items: center;
-      .links {
+      .link {
         display: inline-block;
         line-height: @headerHeight;
         height: 100%;
@@ -78,7 +88,16 @@
         margin-left: 10px;
         &:hover {
           background-color: rgb(244, 244, 244);
+          color: rgb(242, 13, 13);
         }
+      }
+      .search-content {
+        display: inline-block;
+        line-height: @headerHeight;
+        height: 100%;
+        cursor: pointer;
+        padding: 0 1.5em;
+        margin-left: 10px;
       }
     }
     .container {

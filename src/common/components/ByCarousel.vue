@@ -1,11 +1,11 @@
 <template>
     <div class="by-carousel">
         <div class="imgs">
-            <transition-group name="fade">
+            <!-- <transition-group name="fade"> -->
                 <a v-for="(img, index) in imgs" v-if="index == imgIndex" :key="img.src" :href="img.href">
                     <img :src="img.src" :alt="img.alt">
                 </a>
-            </transition-group>
+            <!-- </transition-group> -->
         </div>
         <i class="switch-handler handler-left icon-chevron-left" @click="switchLeft"></i>
         <i class="switch-handler handler-right icon-chevron-right" @click="switchRight"></i>

@@ -36,10 +36,11 @@
 <script>
     import ByInput from "../../common/components/ByInput";
     import ByButton from "../../common/components/ByButton";
+    import ByCheckbox from "../../common/components/ByCheckbox";
     import axios from "axios";
     export default {
       name: "LoginPane",
-      components: {ByInput, ByButton},
+      components: {ByInput, ByButton, ByCheckbox},
       props: ["page", "value"],
       data() {
         return {

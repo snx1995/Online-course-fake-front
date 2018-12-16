@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      showModal: false
+    }
+  }
 }
 </script>
 
@@ -28,5 +33,8 @@ body, html {
 }
 body {
   padding-top: 120px;
+}
+.show-modal {
+  overflow: hidden;
 }
 </style>

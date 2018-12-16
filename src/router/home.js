@@ -2,6 +2,6 @@ import Home from "../home/components/Home";
 
 
 export default {
-    path: "/home",
+    path: "/",
     component: Home
 }

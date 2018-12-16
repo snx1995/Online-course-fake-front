@@ -59,7 +59,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    @bannerWidth: 1000px;
+    @bannerWidth: 1200px;
     @bannerLeftWidth: 220px;
     .banner-left {
         background-color: #2b333b;
