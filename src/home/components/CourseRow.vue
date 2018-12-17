@@ -6,8 +6,10 @@
         </h3>
         <div class="row-content">
             <div class="row-item" v-for="(item, index) in data.courses" :key="index">
-                <img :src="item.src" :alt="item.alt">
-                <p class="course-title">{{item.title}}</p>
+                <router-link :to="'/course'" class="router-link">
+                    <img :src="item.src" :alt="item.alt">
+                    <p class="course-title">{{item.title}}</p>
+                </router-link>
             </div>
         </div>
         </div>
@@ -42,17 +44,20 @@ export default {
                 .row-item {
                     cursor: pointer;
                     width: 216px;
+                    margin-bottom: 20px;
                     img {
                         width: 100%;
                         height: 120px;
                         border-radius: 5px;
                         transition: box-shadow 0.2s;
                     }
-                    .course-title {
+                    p.course-title {
                         margin-top: 15px;
+                        text-decoration: none;
+                        color: #5d5d5d;
                     }
                     &:hover {
-                        .course-title {
+                        p.course-title {
                             color: rgb(242, 13, 13);
                         }
                         img {
@@ -63,5 +68,8 @@ export default {
                 }
             }
         }
+    }
+    .router-link {
+        text-decoration: none;
     }
 </style>

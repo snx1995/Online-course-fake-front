@@ -56,9 +56,10 @@
   .header {
     background-color: #fff;
     color: #5d5d5d;
-    position: absolute;
-    top: 0;
-    left: 0;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    position: relative;
     width: 100%;
     min-width: 1366px;
     height: @headerHeight;
