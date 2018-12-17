@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style>
-@import url("../static/common/common-fonts.css");
+@import url("../static/common/style.css");
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,6 +48,7 @@ export default {
   color: #2c3e50;
   width: 100%;
   min-width: 1200px;
+  padding-bottom: 80px;
 }
 body, html {
   margin: 0;

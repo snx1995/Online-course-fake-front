@@ -6,7 +6,6 @@
     <div class="link-list">
       <div class="link">免费课程</div>
       <div class="link">实战课程</div>
-      <div class="link">就业班</div>
       <div class="link">博客</div>
       <div class="link">问答</div>
       <div class="link">直播</div>

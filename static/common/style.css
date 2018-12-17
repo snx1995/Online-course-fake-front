@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?zg4n75');
-  src:  url('fonts/icomoon.eot?zg4n75#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?zg4n75') format('truetype'),
-    url('fonts/icomoon.woff?zg4n75') format('woff'),
-    url('fonts/icomoon.svg?zg4n75#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?oado8c');
+  src:  url('fonts/icomoon.eot?oado8c#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?oado8c') format('truetype'),
+    url('fonts/icomoon.woff?oado8c') format('woff'),
+    url('fonts/icomoon.svg?oado8c#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,6 +26,45 @@
 
 .icon-search1:before {
   content: "\f002";
+}
+.icon-circle-o:before {
+  content: "\f10c";
+}
+.icon-circle:before {
+  content: "\f111";
+}
+.icon-play-circle:before {
+  content: "\f144";
+}
+.icon-caret-square-o-down:before {
+  content: "\f150";
+}
+.icon-toggle-down:before {
+  content: "\f150";
+}
+.icon-caret-square-o-up:before {
+  content: "\f151";
+}
+.icon-toggle-up:before {
+  content: "\f151";
+}
+.icon-caret-square-o-right:before {
+  content: "\f152";
+}
+.icon-toggle-right:before {
+  content: "\f152";
+}
+.icon-thumbs-up:before {
+  content: "\f164";
+}
+.icon-thumbs-down:before {
+  content: "\f165";
+}
+.icon-venus:before {
+  content: "\f221";
+}
+.icon-mars:before {
+  content: "\f222";
 }
 .icon-check1:before {
   content: "\f00c";
