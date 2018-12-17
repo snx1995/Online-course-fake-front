@@ -1,6 +1,6 @@
 <template>
     <div class="by-user">
-        <img class="by-user-img" :src="user.img" :alt="user.intro">
+        <img class="by-user-img" :src="user.img" :alt="user.name">
         <div class="by-intro">
             <span class="by-user-name">{{user.name}}</span>
             <span class="by-user-school">{{user.school.name}}</span>

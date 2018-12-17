@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="logo">
+    <div class="logo" @click="$router.push('/')">
       <img src="../../../static/logo.png" alt="fake-front-logo">
     </div>
     <div class="link-list">
@@ -68,6 +68,7 @@
     justify-content: space-between;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     .logo {
+      cursor: pointer;
       padding-left: 30px;
       display: inline-block;
       height: 120%;
