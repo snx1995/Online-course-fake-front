@@ -2,21 +2,35 @@
     <div class="course-header">
         <img src="../../../static/imgs/3.jpg" alt="" class="background">
         <div class="course-summary-content">
-            
             <span>课程 \后端开发 \Java \SpringBoot构建电商基础秒杀项目</span>
             <h1>SpringBoot构建电商基础秒杀项目</h1>
             <div class="course-features">
-            <span>难度 中级</span>
-            <span>时长 6小时31分</span>
-            <span>学习人数 3792</span>
-            <span>综合评分 9.2</span>
-        </div>
+                <by-user :user="user" />
+                <span>难度 中级</span>
+                <span>时长 6小时31分</span>
+                <span>学习人数 3792</span>
+                <span>综合评分 9.2</span>
+            </div>
         </div>
     </div>
 </template>
 <script>
+import ByUser from "../../user/components/ByUser";
 export default {
-    
+    name: "CourseBanner",
+    components: {ByUser},
+    data() {
+        return {
+            user: {
+                name: "Banyq",
+                img: "../../../static/imgs/1.jpg",
+                intro: "The founder of fake front",
+                school: {
+                    name: "哈尔滨工业大学"
+                }
+            }
+        }
+    }
 }
 </script>
 <style lang="less" scoped>
@@ -50,6 +64,12 @@ export default {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
+                > * {
+                    margin-right: 20px;
+                }
+                > span {
+                    font-size: 0.8em;
+                }
             }
         }
         

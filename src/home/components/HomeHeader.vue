@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="logo">
-      <img src="../../../static/default.jpg" alt="fake-front-logo">
+      <img src="../../../static/logo.png" alt="fake-front-logo">
     </div>
     <div class="link-list">
       <div class="link">免费课程</div>
@@ -68,10 +68,11 @@
     justify-content: space-between;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     .logo {
+      padding-left: 30px;
       display: inline-block;
-      height: 100%;
+      height: 120%;
       overflow: hidden;
-      width: 150px;
+      width: 200px;
       img {
         width: auto;
         height: 100%;
@@ -81,6 +82,7 @@
       display: flex;
       align-items: center;
       .link {
+        font-weight: bold;
         display: inline-block;
         line-height: @headerHeight;
         height: 100%;
