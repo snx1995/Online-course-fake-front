@@ -11,7 +11,7 @@ export default {
         },
         {
             path: "video/:videoUrl",
-            component: CourseSummary
+            component: () => import("../video/components/Video")
         }
     ]
 }

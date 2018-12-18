@@ -1,16 +1,21 @@
 <template>
     <div class="by-user">
-        <img class="by-user-img" :src="user.img" :alt="user.name">
+        <img class="by-user-img" :src="userComputed.img" :alt="userComputed.name">
         <div class="by-intro">
-            <span class="by-user-name">{{user.name}}</span>
-            <span class="by-user-school">{{user.school.name}}</span>
+            <span class="by-user-name">{{userComputed.name}}</span>
+            <span class="by-user-school">{{userComputed.school.name}}</span>
         </div>
     </div>
 </template>
 <script>
 export default {
     name: "ByUser",
-    props: ["user"] 
+    props: ["user"],
+    computed: {
+        userComputed() {
+            return this.user ? this.user : {school:{}};
+        }
+    }
 }
 </script>
 <style lang="less" scoped>

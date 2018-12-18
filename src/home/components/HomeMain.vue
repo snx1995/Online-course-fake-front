@@ -40,7 +40,6 @@ export default {
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战7", src: "../../../static/imgs/1.jpg", alt: "7"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战2", src: "../../../static/imgs/2.jpg", alt: "2"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战3", src: "../../../static/imgs/3.jpg", alt: "3"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战4", src: "../../../static/imgs/4.jpg", alt: "4"}
                 ]
                 },
                 {
@@ -51,10 +50,6 @@ export default {
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战3", src: "../../../static/imgs/3.jpg", alt: "3"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战4", src: "../../../static/imgs/4.jpg", alt: "4"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战5", src: "../../../static/imgs/5.jpg", alt: "5"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战6", src: "../../../static/imgs/6.jpg", alt: "6"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战7", src: "../../../static/imgs/1.jpg", alt: "7"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战2", src: "../../../static/imgs/2.jpg", alt: "2"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战3", src: "../../../static/imgs/3.jpg", alt: "3"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战4", src: "../../../static/imgs/4.jpg", alt: "4"}
                 ]
                 },
@@ -65,8 +60,6 @@ export default {
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战2", src: "../../../static/imgs/2.jpg", alt: "2"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战3", src: "../../../static/imgs/3.jpg", alt: "3"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战4", src: "../../../static/imgs/4.jpg", alt: "4"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战5", src: "../../../static/imgs/5.jpg", alt: "5"},
-                    {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战6", src: "../../../static/imgs/6.jpg", alt: "6"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战7", src: "../../../static/imgs/1.jpg", alt: "7"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战2", src: "../../../static/imgs/2.jpg", alt: "2"},
                     {title: "微信小程序入门与实战 常用组件API开发技巧i项目实战3", src: "../../../static/imgs/3.jpg", alt: "3"},
