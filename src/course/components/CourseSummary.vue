@@ -1,6 +1,6 @@
 <template>
     <div class="course-summary">
-        <course-banner/>
+        <course-banner :course="course"/>
         <course-nav v-model="currPage"/>
         <div class="course-container">
             <div class="course-chapters" v-show="currPage == 1">
@@ -15,13 +15,13 @@ import CourseBanner from "./CourseBanner";
 import CourseNav from "./CourseNav";
 import CourseChapter from "./CourseChapter";
 import CourseSummaryRight from "./CourseSummaryRight";
-
 export default {
     name: "CourseSummary",
     components: {CourseBanner, CourseNav, CourseChapter, CourseSummaryRight},
     data() {
         return {
             currPage: 1,
+            course: null,
             chapters: [
                 {
                     title: "第1章 课程介绍",
@@ -70,7 +70,30 @@ export default {
                 }
             ]
         }
-    }
+    },
+    beforeRouteEnter (to, from, next) {
+        next(vm => {
+            // 通过 `vm` 访问组件实例
+            console.log(vm);
+            console.log(vm.server);
+            console.log(vm.$server);
+        })
+    },
+    beforeRouteUpdate (to, from, next) {
+    // 在当前路由改变，但是该组件被复用时调用
+    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+    // 可以访问组件实例 `this`
+        console.log("beforeRouteUpdate");
+        let courseId = this.$route.params.courseId;
+        console.log("before axios");
+        axios.get("/action/course/getCourseById.action", {params: {courseId}}).then(response => {
+            if (response.data.status == 200) {
+                this.course = response.data.data;
+            } else alert(response.data.status + ":" + response.data.data);
+        })
+        console.log("fater axios");
+    },
 }
 </script>
 <style lang="less" scoped>
@@ -81,6 +104,7 @@ export default {
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
+            padding-bottom: 50px;
         }
     }
 </style>

@@ -12,10 +12,7 @@
 <script>
 export default {
     name: "CourseChapter",
-    props: ["chapter"],
-    mounted() {
-        console.log(this.$store)
-    }
+    props: ["chapter"]
 }
 </script>
 <style lang="less" scoped>

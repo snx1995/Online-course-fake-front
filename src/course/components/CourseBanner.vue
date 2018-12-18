@@ -1,11 +1,11 @@
 <template>
     <div class="course-header">
-        <img src="../../../static/imgs/3.jpg" alt="" class="background">
+        <img src="../../../static/imgs/4.jpg" alt="" class="background">
         <div class="course-summary-content">
             <span>课程 \后端开发 \Java \SpringBoot构建电商基础秒杀项目</span>
-            <h1>SpringBoot构建电商基础秒杀项目</h1>
+            <h1>{{courseComputed.name}}</h1>
             <div class="course-features">
-                <by-user :user="user" />
+                <by-user :user="courseComputed.teacher" />
                 <span>难度 中级</span>
                 <span>时长 6小时31分</span>
                 <span>学习人数 3792</span>
@@ -19,16 +19,15 @@ import ByUser from "../../user/components/ByUser";
 export default {
     name: "CourseBanner",
     components: {ByUser},
+    props: ["course"],
     data() {
         return {
-            user: {
-                name: "Banyq",
-                img: "../../../static/imgs/1.jpg",
-                intro: "The founder of fake front",
-                school: {
-                    name: "哈尔滨工业大学"
-                }
-            }
+            
+        }
+    },
+    computed: {
+        courseComputed() {
+            return this.course ? this.course : {};
         }
     }
 }

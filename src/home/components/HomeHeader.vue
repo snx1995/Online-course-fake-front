@@ -4,7 +4,6 @@
       <img src="../../../static/logo.png" alt="fake-front-logo">
     </div>
     <div class="link-list">
-      <div class="link">免费课程</div>
       <div class="link">实战课程</div>
       <div class="link">博客</div>
       <div class="link">问答</div>
@@ -66,7 +65,7 @@
     // left: 0;
     position: relative;
     width: 100%;
-    min-width: 1366px;
+    min-width: 1280px;
     height: @headerHeight;
     display: flex;
     align-items: center;

@@ -17,7 +17,7 @@ export default {
             list-style: none;
             padding: 15px;
             li {
-                
+                padding: 10px;
             }
         }
     }

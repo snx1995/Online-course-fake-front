@@ -1,6 +1,6 @@
 <template>
     <div class="home-footer">
-        <span>banyq &copy; 2018-12-18</span>
+        <span>banyq &copy; 2018</span>
         <span>www.byq.com</span>
         <span>fake-front all right reserved.</span>
     </div>
@@ -13,11 +13,12 @@ export default {
 <style lang="less" scoped>
     .home-footer {
         width: 100%;
-        height: 80px;
+        height: 50px;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        color: #5d5d5d;
+        color: #ddd;
+        background-color: #9d9d9d;
         font-size: 0.9m;
         span {
             margin: 0 20px;

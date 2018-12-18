@@ -49,9 +49,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   width: 100%;
-  min-width: 1200px;
+  min-width: 1280px;
 }
 body, html {
+  position: relative;
   margin: 0;
   padding: 0;
   width: 100%;
