@@ -20,7 +20,10 @@
         <span><a href="#" @click="$emit('register')">注册</a></span>
       </div>
       <div v-if="isOnline" class="online-pane">
-        <span><a href="#">{{loginUser}}</a></span>
+        <img :src="'/media' + loginUser.img">
+        <div class="user-menu">
+          
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +33,6 @@
   import BySearchInput from "../../common/components/BySearchInput";
   export default {
     name: "HomeHeader",
-    props: ["isOnline"],
     components: {BySearchInput},
     data() {
       return {
@@ -38,8 +40,12 @@
       }
     },
     computed: {
+      isOnline() {
+        let user = this.$store.state.userStore.user;
+        return user && user.id;
+      },
       loginUser() {
-          return this.$cookies.get("userName");
+          return this.$store.state.userStore.user;
       }
     },
     methods: {
@@ -104,10 +110,58 @@
       }
     }
     .container {
-      line-height: @headerHeight;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       height: 100%;
-      padding: 2em;
-      display: inline-block;
+      margin: 0 2em;
+      .online-pane {
+        @width: 40px;
+        @arrowHeight: 10px;
+        @menuBGColor: black;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+          position: relative;
+          cursor: pointer;
+          width: @width;
+          height: @width;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          &:hover {
+            border: 2px solid rgba(242, 12, 12);
+            // &::after {
+            //   content: "";
+            //   display: block;
+            //   position: absolute;
+            //   top: 100%;
+            //   left: 50%;
+            //   transform: translateX(-50%);
+            //   width: 0;
+            //   height: 0;
+            //   border: @arrowHeight solid transparent;
+            //   border-bottom: @arrowHeight solid @menuBGColor;
+            // }
+            &+.user-menu {
+              display: block;
+            }
+          }
+        }
+        .user-menu {
+          z-index: 200;
+          background-color: @menuBGColor;
+          display: none;
+          position: absolute;
+          top: @width + 10px;
+          right: -1em;
+          width: 200px;
+          height: 120px;
+          box-shadow: 0 12px 24px rgba(7, 17, 27, 0.2);
+          transition: display 0.3s;
+        }
+      }
     }
     a {
       color: inherit;

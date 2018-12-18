@@ -16,9 +16,12 @@
     "axios": "^0.18.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "velocity": "^0.7.2",
+    "velocity-animate": "^1.5.2",
     "vue": "^2.5.21",
     "vue-cookies": "^1.5.12",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

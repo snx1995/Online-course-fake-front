@@ -1,11 +1,18 @@
 <template>
     <div class="by-carousel">
         <div class="imgs">
-            <!-- <transition-group name="fade"> -->
+            <!-- <transition-group
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"> -->
+            <transition-group name="fade">
                 <a v-for="(img, index) in imgs" v-if="index == imgIndex" :key="img.src" :href="img.href">
-                    <img :src="img.src" :alt="img.alt">
+                    <img :src="img.src" :alt="img.alt" :key="img.src">
                 </a>
-            <!-- </transition-group> -->
+            </transition-group>
         </div>
         <i class="switch-handler handler-left icon-chevron-left" @click="switchLeft"></i>
         <i class="switch-handler handler-right icon-chevron-right" @click="switchRight"></i>
@@ -15,6 +22,7 @@
     </div>
 </template>
 <script>
+import Velocity from "velocity-animate";
 export default {
     name: "ByCarousel",
     props: ["imgs"],
@@ -34,7 +42,47 @@ export default {
         },
         switchTo(n) {
             this.imgIndex = n;
+        },
+        beforeEnter(el) {
+            console.log(el);
+            console.log("beforeEnter");
+            el.style.transform = "translateX(-100%)";
+        },
+        enter(el, done) {
+            console.log("enter");
+            Velocity(el, 'stop');
+            Velocity(el, {
+                transform: "translateX(0)"
+            }, {
+                duration: 1000,
+                easing: [ 0.4, 0.01, 0.165, 0.99 ],
+                complete: done
+            })
+        },
+        afterEnter(el) {
+            console.log("afterEnter");
+        },
+        beforeLeave(el) {
+            console.log(el);
+            console.log("beforeLeave");
+        },
+        leave(el, done) {
+            console.log("leave");
+            Velocity(el, 'stop');
+            Velocity(el, {
+                transform: "translateX(100%)"
+            }, {
+                duration: 1000,
+                easing: [ 0.4, 0.01, 0.165, 0.99 ],
+                complete: done
+            })
+        },
+        afterLeave(el) {
+            console.log("afterLeave");
         }
+    },
+    mounted() {
+        setInterval(this.switchRight, 5000);
     }
 }
 </script>
@@ -43,12 +91,19 @@ export default {
         width: 100%;
         height: 100%;
         position: relative;
+        overflow: hidden;
         .imgs {
+            position: relative;
             width: 100%;
             height: 100%;
-            img {
-                width: 100%;
-                height: 100%;
+            a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }               
             }
         }
         .switch-handler {
@@ -79,6 +134,7 @@ export default {
             }
         }
         .index-indicators {
+            z-index: 120;
             position: absolute;
             bottom: 20px;
             right: 20px;
@@ -115,5 +171,18 @@ export default {
     }
     .fade-enter-active, .fade-leave-active {
         transition: opacity 1s;
+    }
+
+    .slide-enter {
+        transform: translateX(-100%);
+    }
+    .slide-leave-to {
+        transform: translateX(100%);
+    }
+    .slide-enter-active, .slide-leave-active {
+        transition: transform 1s;
+    }
+    .slide-enter-to {
+        transform: translateX(0);
     }
 </style>

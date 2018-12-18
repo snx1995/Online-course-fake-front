@@ -18,7 +18,7 @@ export default {
     name: "IMPane",
     data() {
         return {
-            msgUnread: 100,
+            msgUnread: 0,
             showIMPane: false
         }
     },
@@ -32,7 +32,9 @@ export default {
 </script>
 <style lang="less" scoped>
     .im-pane {
+        z-index: 1000;
         .im-indicator {
+            z-index: inherit;
             padding: 0 20px;
             border-radius: 5px 5px 0 0;
             cursor: pointer;
@@ -48,12 +50,14 @@ export default {
             box-shadow: 0px 0 12px rgba(7, 17, 27, 0.2);
         }
         .im-pane-containter {
+            z-index: inherit;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             .im-pane-mask {
+                z-index: inherit;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -62,6 +66,7 @@ export default {
                 background-color: rgba(0, 0, 0, 0.3);
             }
             .im-pane {
+                z-index: 1001;
                 position: absolute;
                 top: 50%;
                 left: 50%;

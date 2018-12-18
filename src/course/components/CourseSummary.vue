@@ -1,9 +1,9 @@
 <template>
     <div class="course-summary">
-        <course-banner />
-        <course-nav />
+        <course-banner/>
+        <course-nav v-model="currPage"/>
         <div class="course-container">
-            <div class="course-chapters">
+            <div class="course-chapters" v-show="currPage == 1">
                 <course-chapter v-for="(chapter, index) in chapters" :key="index" :chapter="chapter" />
             </div>
             <course-summary-right />
@@ -21,6 +21,7 @@ export default {
     components: {CourseBanner, CourseNav, CourseChapter, CourseSummaryRight},
     data() {
         return {
+            currPage: 1,
             chapters: [
                 {
                     title: "第1章 课程介绍",

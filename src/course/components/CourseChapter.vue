@@ -12,7 +12,10 @@
 <script>
 export default {
     name: "CourseChapter",
-    props: ["chapter"]
+    props: ["chapter"],
+    mounted() {
+        console.log(this.$store)
+    }
 }
 </script>
 <style lang="less" scoped>
@@ -24,7 +27,7 @@ export default {
         height: auto;
         padding: 24px 32px;
         background-color: white;
-        box-shadow: 0 12px 24px rgba(7, 17, 27, 0.2);
+        box-shadow: 0 12px 20px rgba(7, 17, 27, 0.2);
         .chapter-intro {
             font-size: 0.8em;
         }

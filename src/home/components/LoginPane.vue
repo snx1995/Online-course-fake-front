@@ -86,6 +86,7 @@
             let user;
             if (response.data.status == 200) {
               user = response.data.data;
+              this.$store.commit("setUser", response.data.data);
               this.$cookies.set("token", user.token);
               this.$cookies.set("userName", user.name);
               this.$emit("success", "login");
@@ -152,9 +153,10 @@
     }
   }
   .fade-enter, .fade-leave-to {
+    transform: translateY(-5%);
     opacity: 0;
   }
   .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
   }
 </style>

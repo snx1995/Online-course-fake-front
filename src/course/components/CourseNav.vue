@@ -1,10 +1,10 @@
 <template>
     <div class="course-nav">
         <div class="item-content">
-            <div class="nav-item" :class="{active : currPage == 1}" @click="currPage = 1">课程主页</div>
-            <div class="nav-item" :class="{active : currPage == 2}" @click="currPage = 2">课后讨论</div>
-            <div class="nav-item" :class="{active : currPage == 3}" @click="currPage = 3">问学霸</div>
-            <div class="nav-item" :class="{active : currPage == 4}" @click="currPage = 4">评分</div>
+            <div class="nav-item" :class="{active : value == 1}" @click="value = 1;$emit('input', 1)">课程主页</div>
+            <div class="nav-item" :class="{active : value == 2}" @click="value = 2;$emit('input', 2)">课后讨论</div>
+            <div class="nav-item" :class="{active : value == 3}" @click="value = 3;$emit('input', 3)">问学霸</div>
+            <div class="nav-item" :class="{active : value == 4}" @click="value = 4;$emit('input', 4)">评分</div>
         </div>
         <div class="course-learn-pane">
             <button class="course-learn-btn">加入学习</button>
@@ -14,9 +14,10 @@
 <script>
 export default {
     name: "CourseNav",
+    props: ["value"],
     data() {
         return {
-            currPage: 1
+            
         }
     }
 }

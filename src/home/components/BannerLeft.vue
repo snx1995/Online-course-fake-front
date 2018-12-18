@@ -2,52 +2,45 @@
     <div class="banner-left">
         <ul class="banner-menu">
             <li>
-                前沿 / 区块链 / 人工智能
+                工学 / 计算机
                 <i class="icon-keyboard_arrow_right"></i>
                 <div class="item-detail">
                     <h1>1</h1>
                 </div>
             </li>
             <li>
-                前端 / 小程序 / JS
+                心理学 / 哲学
                 <i class="icon-keyboard_arrow_right"></i>
                 <div class="item-detail">
                     <h1>1</h1>
                 </div>
             </li>
             <li>
-                后端 / JAVA / Python
+                文学历史 / 艺术设计
                 <i class="icon-keyboard_arrow_right"></i>
                 <div class="item-detail">
 
                 </div>
             </li>
             <li>
-                移动 / Android / IOS
+                法学 / 经济管理
                 <i class="icon-keyboard_arrow_right"></i>
                 <div class="item-detail">
 
                 </div>
             </li>
             <li>
-                云计算 / 大数据 / 容器
+                理学 / 生命科学
                 <i class="icon-keyboard_arrow_right"></i>
                 <div class="item-detail">
 
                 </div>
             </li>
             <li>
-                运维 / 测试 / 数据库
+                教育教学 / 外语
                 <i class="icon-keyboard_arrow_right"></i>
                 <div class="item-detail">
 
-                </div>
-            </li>
-            <li>
-                UI设计 / 3D动画 / 游戏
-                <i class="icon-keyboard_arrow_right"></i>
-                <div class="item-detail">
-                    <h1>1</h1>
                 </div>
             </li>
         </ul>
@@ -88,6 +81,9 @@ export default {
                 line-height: @height;
                 height: @height;
                 cursor: default;
+                i{
+                    padding-right: 10px;
+                }
                 .item-detail {
                     display: none;
                     background-color: #fff;

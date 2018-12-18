@@ -4,6 +4,7 @@
       <div class="content">
         <router-view />
       </div>
+      <home-footer />
       <IMPane />
       <LoginPane v-model="loginPanePage" v-show="showLoginPane" @close="closeLoginModal" @success="authoritySuccess($event)"/>
   </div>
@@ -13,9 +14,10 @@
 import HomeHeader from "./home/components/HomeHeader";
 import LoginPane from "./home/components/LoginPane";
 import IMPane from "./home/components/IMPane";
+import HomeFooter from "./home/components/HomeFooter";
 export default {
   name: 'App',
-  components: {LoginPane, HomeHeader, IMPane},
+  components: {LoginPane, HomeHeader, IMPane, HomeFooter},
   data() {
     return {
       loginPanePage: "login",
@@ -42,13 +44,12 @@ export default {
 <style>
 @import url("../static/common/style.css");
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "微软雅黑", "Microsoft Ya Hei", 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   width: 100%;
   min-width: 1200px;
-  padding-bottom: 80px;
 }
 body, html {
   margin: 0;

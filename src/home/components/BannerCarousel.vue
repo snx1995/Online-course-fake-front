@@ -14,32 +14,32 @@ export default {
                 {
                     src: "../../../static/imgs/1.jpg",
                     alt: "1",
-                    href: "#"
+                    href: "/#/course"
                 },
                 {
                     src: "../../../static/imgs/2.jpg",
                     alt: "2",
-                    href: "#"
+                    href: "/#/course"
                 },
                 {
                     src: "../../../static/imgs/3.jpg",
                     alt: "3",
-                    href: "#"
+                    href: "/#/course"
                 },
                 {
                     src: "../../../static/imgs/4.jpg",
                     alt: "4",
-                    href: "#"
+                    href: "/#/course"
                 },
                 {
                     src: "../../../static/imgs/5.jpg",
                     alt: "5",
-                    href: "#"
+                    href: "/#/course"
                 },
                 {
                     src: "../../../static/imgs/6.jpg",
                     alt: "6",
-                    href: "#"
+                    href: "/#/course"
                 },
             ]
         }
