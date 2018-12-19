@@ -131,18 +131,6 @@
           border: 2px solid transparent;
           &:hover {
             border: 2px solid rgba(242, 12, 12);
-            // &::after {
-            //   content: "";
-            //   display: block;
-            //   position: absolute;
-            //   top: 100%;
-            //   left: 50%;
-            //   transform: translateX(-50%);
-            //   width: 0;
-            //   height: 0;
-            //   border: @arrowHeight solid transparent;
-            //   border-bottom: @arrowHeight solid @menuBGColor;
-            // }
             &+.user-menu {
               display: block;
             }

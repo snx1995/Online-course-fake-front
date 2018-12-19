@@ -6,7 +6,7 @@
         </h3>
         <div class="row-content">
             <div class="row-item" v-for="(item, index) in data.courses" :key="index">
-                <router-link :to="'/course'" class="router-link">
+                <router-link :to="'/course/7'" class="router-link">
                     <img :src="item.src" :alt="item.alt">
                     <p class="course-title">{{item.title}}</p>
                 </router-link>
@@ -49,7 +49,7 @@ export default {
                         width: 100%;
                         height: 120px;
                         border-radius: 5px;
-                        transition: box-shadow 0.2s;
+                        transition: box-shadow 0.2s, transform 0.2s;
                     }
                     p.course-title {
                         margin-top: 15px;
@@ -61,7 +61,8 @@ export default {
                             color: rgb(242, 13, 13);
                         }
                         img {
-                            box-shadow: 0 8px 20px rgba(7, 17, 27, 0.3);
+                            transform: translateY(-4%);
+                            box-shadow: 8px 8px 20px rgba(7, 17, 27, 0.4);
                         }
                     }
 

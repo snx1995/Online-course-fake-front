@@ -5,7 +5,7 @@
             <span>课程 \后端开发 \Java \SpringBoot构建电商基础秒杀项目</span>
             <h1>{{courseComputed.name}}</h1>
             <div class="course-features">
-                <by-user :user="courseComputed.teacher" />
+                <by-user v-bind="courseComputed.teacher" />
                 <span>难度 中级</span>
                 <span>时长 6小时31分</span>
                 <span>学习人数 3792</span>
