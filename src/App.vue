@@ -15,6 +15,8 @@ import HomeHeader from "./home/components/HomeHeader";
 import LoginPane from "./home/components/LoginPane";
 import IMPane from "./home/components/IMPane";
 import HomeFooter from "./home/components/HomeFooter";
+
+
 export default {
   name: 'App',
   components: {LoginPane, HomeHeader, IMPane, HomeFooter},
@@ -37,7 +39,15 @@ export default {
       console.log(type);
       if (type == "login") this.isOnline = true;
     }
-  }
+  },
+  mounted() {
+    let userInfo = this.$fclient.read(this.$fconfig.LOCAL_USER_KEY);
+    if (userInfo) {
+      this.isOnline = true;
+      this.$store.commit("setUser", userInfo);
+    }
+  },
+  
 }
 </script>
 

@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "blueimp-md5": "^2.10.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "velocity": "^0.7.2",

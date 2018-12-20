@@ -5,9 +5,15 @@ import App from './App';
 import router from './router';
 import store from "./store/store";
 import server from "./utils/nework";
+import client from "./utils/client";
+import config from "./config";
+
 Vue.config.productionTip = false
 
-Vue.prototype.$server = server;
+Vue.prototype.$fserver = server;
+Vue.prototype.$fclient = client;
+Vue.prototype.$fconfig = config;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

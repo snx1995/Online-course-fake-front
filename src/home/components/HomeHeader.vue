@@ -20,8 +20,14 @@
       </div>
       <div v-if="isOnline" class="online-pane">
         <img :src="'/media' + loginUser.img">
-        <div class="user-menu">
-          
+        <div class="user-menu click-close">
+          <ul>
+            <li>个人中心</li>
+            <li>审批中心</li>
+            <li>我的课程</li>
+            <li>关于网站</li>
+            <li @click="logout">退出登录</li>            
+          </ul>
         </div>
       </div>
     </div>
@@ -35,7 +41,8 @@
     components: {BySearchInput},
     data() {
       return {
-        keyword: ""
+        keyword: "",
+        showUserMenu: false
       }
     },
     computed: {
@@ -50,8 +57,11 @@
     methods: {
       search() {
         alert("search" + this.keyword);
+      },
+      logout() {
+        this.$fclient.logout();
       }
-    }
+    },
   }
 </script>
 
@@ -117,36 +127,59 @@
       .online-pane {
         @width: 40px;
         @arrowHeight: 10px;
-        @menuBGColor: black;
+        @menuBGColor: #fff;
+        width: 100%;
+        height: 100%;
         position: relative;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        &:hover {
+          img {
+            border: 2px solid rgba(242, 12, 12);
+          }
+          .user-menu {
+            display: block;
+          }
+        }
         img {
           position: relative;
           cursor: pointer;
+          display: block;
           width: @width;
           height: @width;
           border-radius: 50%;
           border: 2px solid transparent;
-          &:hover {
-            border: 2px solid rgba(242, 12, 12);
-            &+.user-menu {
-              display: block;
-            }
-          }
         }
         .user-menu {
+          display: none;
           z-index: 200;
           background-color: @menuBGColor;
-          display: none;
           position: absolute;
-          top: @width + 10px;
+          top: 70px;
           right: -1em;
-          width: 200px;
-          height: 120px;
-          box-shadow: 0 12px 24px rgba(7, 17, 27, 0.2);
+          width: auto;
+          box-shadow: 0 0px 24px rgba(7, 17, 27, 0.2);
+          padding: 10px 0;
+          border-radius: 5px;
           transition: display 0.3s;
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            li {
+              cursor: pointer;
+              padding: 5px 20px;
+              width: 5em;
+              color: #5d5d5d;
+              text-align: center;
+              &:hover {
+                background-color: rgb(242, 13, 13);
+                color: #fff;
+              }
+            }
+          }
         }
       }
     }

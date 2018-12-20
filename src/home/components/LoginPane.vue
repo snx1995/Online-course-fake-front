@@ -37,7 +37,9 @@
     import ByInput from "../../common/components/ByInput";
     import ByButton from "../../common/components/ByButton";
     import ByCheckbox from "../../common/components/ByCheckbox";
+
     import axios from "axios";
+    import md5 from "blueimp-md5";
     export default {
       name: "LoginPane",
       components: {ByInput, ByButton, ByCheckbox},
@@ -79,7 +81,7 @@
           axios.get("/action/authority/login.action", {
             params: {
               account: $this.account,
-              password: $this.password
+              password: md5($this.password, "hit-go-forward")
             }
           }).then(response => {
             console.log(response);
@@ -87,8 +89,7 @@
             if (response.data.status == 200) {
               user = response.data.data;
               this.$store.commit("setUser", response.data.data);
-              this.$cookies.set("token", user.token);
-              this.$cookies.set("userName", user.name);
+              this.$fclient.store(this.$fconfig.LOCAL_USER_KEY, response.data.data);
               this.$emit("success", "login");
             } else alert(response.data.data);
             this.$emit("close");

@@ -4,7 +4,7 @@
             <h2>第一章-基础知识</h2>
         </div>
         <div class="video-container">
-        <video :src="videoUrl" controls width="800px" height="540px;" poster="/media/resource/default.png"></video>
+        <by-video />
         <div class="video-side-pane">
             <div class="nav">
                 <div class="nav-item">弹幕</div>
@@ -15,8 +15,10 @@
     </div>
 </template>
 <script>
+import ByVideo from "../../common/components/ByVideo";
 export default {
     name: "Video",
+    components: {ByVideo},
     data() {
         return {
             videoUrl: "/media/resource/example.mp4"
