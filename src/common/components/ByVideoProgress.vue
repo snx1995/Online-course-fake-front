@@ -1,21 +1,70 @@
 <template>
     <div class="by-video-progress">
-        <div class="progress-loaded" :style="{width: loaded + 'px'}"></div>
-        <div class="progress-played" :style="{width: position + 'px'}"></div>
+        <div class="progress-loaded" :style="{width: loaded + '%'}"></div>
+        <div class="progress-played" :style="{width: value + '%'}"></div>
         <div class="play-progress-outer">
-            <div class="by-progress-drag-wrapper">
-                <div class="handler" :style="{left: position + 'px'}"></div>                
-            </div>
+            <div @drag.prevent="" class="by-video-progress-handler" @mousedown="mousedown" @mouseup="mouseup" :style="{left: value + '%'}"></div>
         </div>
     </div>
 </template>
 <script>
 export default {
     name: "ByVideoProgress",
-    props: ["position", "loaded"],
+    props: ["value", "loaded"],
     data() {
         return {
+            slideEnabled: false,
+        }
+    },
+    methods: {
+        mousedown() {
+            console.log("mousedown");
+        },
+        mouseup() {
+            console.log("mouseup");
+        }
+    },
+    mounted() {
+        let $this = this;
+        console.log(this);
+        let outer = $this.$el.children[2];
+        let val = 0;
 
+        document.addEventListener("mousedown", event => {
+            let target = event.target;
+            if (target.classList.contains("by-video-progress-handler")) {
+                console.log("moveenabled");                
+                $this.slideEnabled = true;
+            }
+        });
+
+        document.addEventListener("mousemove", event => {
+            if ($this.slideEnabled) {
+                // console.log("moving");
+                let start = getOffsetLeft(outer);
+                let width = outer.clientWidth;
+                let mousePosX = event.clientX;
+
+                console.log(start, width, mousePosX);
+                
+                val = (mousePosX - start) / width;
+                if (val < 0) val = 0;
+                else if (val > 1) val = 1;
+                console.log(val);
+                this.$emit("input", val);
+            }
+        });
+        document.addEventListener("mouseup", event => {
+            if ($this.slideEnabled) {
+                $this.slideEnabled = false;
+                this.$emit("progresschange", val * 100);
+            }
+        });
+
+        function getOffsetLeft(el){
+            return el.offsetParent
+            ? el.offsetLeft + getOffsetLeft(el.offsetParent)
+            : el.offsetLeft
         }
     }
 }
@@ -35,18 +84,16 @@ export default {
         }
         .progress-loaded {
             background-color: rgba(255, 255, 255, 0.8);
-            // width: 400px;
         }
         .progress-played {
             background-color: rgba(242, 13, 13, 0.8);
-            // width: 200px;
         }
         .play-progress-outer {
             position: absolute;
             background-color: transparent;
             height: @barHeight;
             width: 100%;
-            .handler {
+            .by-video-progress-handler {
                 // z-index: 100;
                 cursor: pointer;
                 border-radius: 50%;
@@ -62,9 +109,6 @@ export default {
                 }
                 &:active {
                     background-color: rgba(200, 200, 200, 1);
-                    .by-progress-drag-wrapper {
-                        display: block;
-                    }
                 }
                 
             }

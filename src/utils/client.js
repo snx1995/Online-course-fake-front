@@ -4,7 +4,7 @@ let client = {
             let so = new StorageObject(value);
             window.localStorage.setItem(key, JSON.stringify(so));
         } else {
-            // TODO
+            $cookies.set(key, value);
         }
     },
     read(key) {
@@ -24,15 +24,18 @@ let client = {
                 return null;
             }
         } else {
-            // TODO
+            console.log("浏览器不支持localStorage!")
+            return $cookies.get(key);
         }
-        return null;
     },
     logout() {
         if (confirm("将会清除用户信息并退出登录返回主页，确认继续吗？")) {
             window.localStorage.clear();
             window.location = "/";
         }
+    },
+    cookieTest() {
+        $cookies.set("test", "this is a test");
     }
 }
 

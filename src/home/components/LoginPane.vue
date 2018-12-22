@@ -78,7 +78,7 @@
         },
         login() {
           let $this = this; 
-          axios.get("/action/authority/login.action", {
+          $this.$fserver.get("/action/authority/login.action", {
             params: {
               account: $this.account,
               password: md5($this.password, "hit-go-forward")
@@ -86,12 +86,12 @@
           }).then(response => {
             console.log(response);
             let user;
-            if (response.data.status == 200) {
-              user = response.data.data;
-              this.$store.commit("setUser", response.data.data);
-              this.$fclient.store(this.$fconfig.LOCAL_USER_KEY, response.data.data);
+            if (response.status == 200) {
+              user = response.data;
+              this.$store.commit("setUser", response.data);
+              this.$fclient.store(this.$fconfig.LOCAL_USER_KEY, response.data);
               this.$emit("success", "login");
-            } else alert(response.data.data);
+            } else alert(response.data);
             this.$emit("close");
           })
         }

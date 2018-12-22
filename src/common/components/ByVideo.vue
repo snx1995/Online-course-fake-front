@@ -4,11 +4,12 @@
             您的浏览器不受支持，推荐使用最新版Chrome观看！
         </video>
         <div class="by-video-bottom">
-            <by-video-progress :position="position" :loaded="loaded"/>
+            <by-video-progress v-model="position" :loaded="loaded" @progresschange="progressChange($event)"/>
             <div class="by-video-controls">
                 <div class="control-left">
                     <i :class="playIcon" @click="playControl"></i>
                     <i class="icon-spin" @click="refresh"></i>
+                    <span>{{currentTime + "/" + duration}}</span>
                 </div>
                 <div class="control-middle">
                     <input type="text" v-model="barrage" v-show="enableBarrage">
@@ -16,10 +17,9 @@
                 </div>
                 <div class="control-right">
                     <by-checkbox 
-                    style="color: rgb(242, 13, 13);" 
-                    :box-style="'toggle'" 
+                    style="color: #fff;" 
+                    :box-style="'comment'" 
                     v-model="enableBarrage">
-                    弹幕
                     </by-checkbox>
                     <i class="icon-volume-medium"></i>
                     <i class="icon-aspect_ratio"></i>
@@ -60,7 +60,8 @@ export default {
             enableBarrage: true,
             barrage: "",
             isReady: false,
-
+            currentTime: "00:00",
+            duration: "00:00"
         }
     },
     methods: {
@@ -69,7 +70,6 @@ export default {
             if (!video) return;
             switch (this.state) {
                 case 0:
-                    break;
                 case 1:
                     this.state = 2;
                     video.pause();
@@ -90,6 +90,10 @@ export default {
             this.loaded = 0;
             this.position = 0;
             this.isReady = false;
+            this.currentTime = "00:00";
+        },
+        progressChange(e) {
+            this.video.currentTime = this.video.duration * e * 100;
         }
     },
     computed: {
@@ -115,9 +119,17 @@ export default {
             let duration = this.video.duration;
             let len = buffered.length - 1;
             try {
-                this.loaded = this.video.clientWidth * buffered.end(len > 0 ? -1 : len) / duration;
+                this.loaded = buffered.end(len > 0 ? -1 : len) / duration * 100;
             } catch(e) {} 
         }
+
+        let formatTime = s => {
+            s = s.toFixed();
+            let m = Math.floor(s / 60);
+            let h = Math.floor(m / 60);
+            s %= 60;
+            return (h == 0? "" : h + ":") + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        } 
 
         this.video = document.querySelector("video");
         this.video.oncanplay = event => {
@@ -135,7 +147,11 @@ export default {
             if (this.isReady) {
                 let currentTime = this.video.currentTime;
                 let duration = this.video.duration;
-                this.position = this.video.clientWidth * currentTime / duration;
+
+                this.currentTime = formatTime(currentTime);
+                this.duration = formatTime(duration);
+
+                this.position = currentTime / duration * 100;
             }
         }
         this.video.onended = event => {
@@ -148,8 +164,6 @@ export default {
         this.video.onprogress = event => {
             setLoadedBar();
         }
-
-        
     }
 }
 </script>
@@ -169,6 +183,11 @@ export default {
         height: auto;
         width: fit-content;
         background-color: #222;
+        &:hover {
+            .by-video-bottom {
+                opacity: 1;
+            }
+        }
         .by-video-bottom {
             opacity: 0;
             position: absolute;
@@ -177,6 +196,7 @@ export default {
             height: 70px;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.6);
+            transition: opacity 0.5s;
             .by-video-controls {
                 padding-bottom: 10px;
                 overflow: hidden;
@@ -195,7 +215,15 @@ export default {
                     align-items: center;
                 }
                 .control-left {
-                    width: 100px;
+                    width: 172px;
+                    span {
+                        display: inline-block;
+                        width: 50px;
+                        text-align: center;
+                        margin-left: 20px;
+                        font-size: 0.8em;
+                        color: #fff;
+                    }
                 }
                 .control-middle {
                     input {
@@ -204,7 +232,7 @@ export default {
                         border-radius: 5px 0 0 5px;
                         box-sizing: border-box;
                         display: inline-block;
-                        height: 30px;
+                        height: 35px;
                         width: 250px;
                         background: transparent;
                         border: 1px solid rgba(242, 13, 13, 1);
@@ -219,7 +247,7 @@ export default {
                         color: white;
                         font-weight: bold;
                         display: block;
-                        height: 30px;
+                        height: 35px;
                         width: auto;
                         padding: 0 1em;
                         background: rgba(242, 13, 13, 1);
@@ -258,9 +286,6 @@ export default {
                         animation: rotate 1s infinite linear;
                     }
                 }
-            }
-            &:hover {
-                opacity: 1;
             }
         }
     }

@@ -56,6 +56,42 @@ export default {
                 star: {
                     t: "icon-star1",
                     f: "icon-star-o"
+                },
+                comment: {
+                    t: "icon-commenting",
+                    f: "icon-commenting-o"
+                },
+                eye: {
+                    t: "icon-eye",
+                    f: "icon-eye-slash"
+                },
+                square: {
+                    t: "icon-square",
+                    f: "icon-square-o"
+                },
+                circle: {
+                    t: "icon-circle",
+                    f: "icon-circle-o"
+                },
+                thumbs: {
+                    t: "icon-thumbs-up",
+                    f: "icon-thumbs-down"
+                },
+                plane: {
+                    t: "icon-paper-plane",
+                    f: "icon-paper-plane-o"
+                },
+                envelope: {
+                    t: "icon-envelope-open",
+                    f: "icon-envelope-open-o"
+                },
+                user: {
+                    t: "icon-user-circle",
+                    f: "icon-user-circle-o"
+                },
+                idCard: {
+                    t: "icon-id-card",
+                    f: "icon-id-card-o"
                 }
             }
         }

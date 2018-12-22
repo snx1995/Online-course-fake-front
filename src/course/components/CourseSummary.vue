@@ -93,9 +93,9 @@ export default {
 
 function getCourseInfo(courseId, $this) {
     $this.$fserver.get("/action/course/getCourseById.action", {params: {courseId}}).then(response => {
-            if (response.data.status == 200) {
-                $this.course = response.data.data;
-            } else alert(response.data.status + ":" + response.data.data);
+            if (response.status == 200) {
+                $this.course = response.data;
+            } else alert(response.status + ":" + response.data);
         })
 }
 </script>
