@@ -23,7 +23,7 @@
         <div class="user-menu click-close">
           <ul>
             <li>个人中心</li>
-            <li>审批中心</li>
+            <li v-show="loginUser.type >= 2">审批中心</li>
             <li>我的课程</li>
             <li>关于网站</li>
             <li @click="logout">退出登录</li>            

@@ -21,7 +21,7 @@ export default {
     components: {ByVideo},
     data() {
         return {
-            videoUrl: "/media/resource/example.mp4"
+            videoUrl: "/media/resource/example2.avi"
         }
     }
 }
