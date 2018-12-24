@@ -6,6 +6,7 @@ import HomeMain from "../home/components/HomeMain";
 import course from "./course";
 import videoRouter from "./videoRouter";
 import testRouter from "./testRouter";
+import userCenterRouter from "./userCenterRouter";
 
 import VueCookies from "vue-cookies";
 Vue.use(Router);
@@ -20,6 +21,8 @@ export default new Router({
     },
     course,
     videoRouter,
+    userCenterRouter,
+
     testRouter,
   ]
 })

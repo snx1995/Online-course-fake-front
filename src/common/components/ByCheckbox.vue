@@ -1,6 +1,6 @@
 <template>
     <span class="by-checkbox">
-        <i :class="iconClass" @click="$emit('input', !value)" :hint="hint"></i>
+        <i :class="iconClass" @click="$emit('input', !value)" :title="hint"></i>
         <slot></slot>
         <input type="checkbox" :name="name" :value="value">
     </span>
@@ -108,6 +108,17 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+    @keyframes beat {
+        0% {
+            transform: scale(0);
+        }
+        90% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
     .by-checkbox {
         color: inherit;
         display: flex;
@@ -122,5 +133,8 @@ export default {
         input {
             display: none;
         }
+    }
+    .beat-enter-active {
+        animation: beat 0.3s;
     }
 </style>

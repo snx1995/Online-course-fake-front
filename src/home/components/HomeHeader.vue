@@ -20,13 +20,23 @@
       </div>
       <div v-if="isOnline" class="online-pane">
         <img :src="'/media' + loginUser.img">
-        <div class="user-menu click-close">
+        <div class="user-menu">
           <ul>
-            <li>个人中心</li>
-            <li v-show="loginUser.type >= 2">审批中心</li>
-            <li>我的课程</li>
-            <li>关于网站</li>
-            <li @click="logout">退出登录</li>            
+            <li><router-link :to="'/userCenter'">
+              <i class="icon-user-circle"></i>个人中心
+            </router-link></li>
+            <li v-if="loginUser.type <= 2">
+              <i class="icon-beenhere"></i>审批中心
+            </li>
+            <li>
+              我的课程
+            </li>
+            <li>
+              关于网站
+            </li>
+            <li @click="logout">
+              退出登录
+            </li>            
           </ul>
         </div>
       </div>
@@ -60,6 +70,9 @@
       },
       logout() {
         this.$fclient.logout();
+      },
+      userCenter() {
+        this.$router.push("/userCenter")
       }
     },
   }
@@ -180,6 +193,9 @@
               }
             }
           }
+          // &:active {
+          //   display: none;
+          // }
         }
       }
     }
