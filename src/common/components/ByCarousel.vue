@@ -134,7 +134,6 @@ export default {
             }
         }
         .index-indicators {
-            z-index: 120;
             position: absolute;
             bottom: 20px;
             right: 20px;

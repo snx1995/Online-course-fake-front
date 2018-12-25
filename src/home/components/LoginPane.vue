@@ -17,7 +17,9 @@
               <by-input placeholder="email" v-model="email" />
               <by-input placeholder="password" type="password" v-model="passwd" />
               <by-input placeholder="password confirm" type="password" v-model="passwdConfirm" />
-              <by-input placeholder="验证码" v-model="validateCode"/>
+              <by-input-btn-right placeholder="验证码" v-model="validateCode" :size="theme.inputSize">
+                <i class="icon-spinner9"></i>验证码
+              </by-input-btn-right>
             </div>
           </div>
           <div class="footer" v-show="value == 'login'">
@@ -25,7 +27,7 @@
             <by-button @click.native="$emit('close')">取消</by-button>
           </div>
           <div class="footer" v-show="value == 'register'">
-            <by-button @click.native="login">注册<i class="icon-account_box"></i></by-button>
+            <by-button @click.native="login">注册</by-button>
             <by-button @click.native="$emit('close')">取消</by-button>
           </div>
         </div>
@@ -37,15 +39,19 @@
     import ByInput from "../../common/components/ByInput";
     import ByButton from "../../common/components/ByButton";
     import ByCheckbox from "../../common/components/ByCheckbox";
+    import ByInputBtnRight from "../../common/components/ByInputBtnRight";
 
     import axios from "axios";
     import md5 from "blueimp-md5";
     export default {
       name: "LoginPane",
-      components: {ByInput, ByButton, ByCheckbox},
+      components: {ByInput, ByButton, ByCheckbox, ByInputBtnRight},
       props: ["page", "value"],
       data() {
         return {
+          theme: {
+            inputSize: "large"
+          },
           account: "",
           password: "",
           name: "",
@@ -160,5 +166,19 @@
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.3s, transform 0.3s;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .icon-spinner9 {
+    margin-right: 10px;
+    animation: rotate 1s infinite linear;
   }
 </style>

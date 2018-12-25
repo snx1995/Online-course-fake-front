@@ -1,4 +1,4 @@
 export default {
     path: "/test",
-    component: () => import("../common/components/ByVideo")
+    component: () => import("../common/components/ByInputBtnRight")
 }

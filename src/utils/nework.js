@@ -1,5 +1,5 @@
 import axios from 'axios';
-import toast from './toast';
+import toast from './notification';
 
 const STATUS_HAVE_NO_RIGHT = 403000;
 const STATUS_INVALID_PARAMS = 403001;

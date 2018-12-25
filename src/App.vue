@@ -1,12 +1,13 @@
 <template>
   <div id="app">
       <HomeHeader @login="showLoginModal('login')" @register="showLoginModal('register')" :is-online="isOnline" />
-      <div class="content">
+      <div class="content" >
         <router-view />
       </div>
       <home-footer />
       <IMPane />
       <LoginPane v-model="loginPanePage" v-show="showLoginPane" @close="closeLoginModal" @success="authoritySuccess($event)"/>
+      <by-notification ref="notification"/>
   </div>
 </template>
 
@@ -15,11 +16,11 @@ import HomeHeader from "./home/components/HomeHeader";
 import LoginPane from "./home/components/LoginPane";
 import IMPane from "./home/components/IMPane";
 import HomeFooter from "./home/components/HomeFooter";
-
+import ByNotification from "./common/components/notification/ByNotifySystem"
 
 export default {
   name: 'App',
-  components: {LoginPane, HomeHeader, IMPane, HomeFooter},
+  components: {LoginPane, HomeHeader, IMPane, HomeFooter, ByNotification},
   data() {
     return {
       loginPanePage: "login",
@@ -38,6 +39,10 @@ export default {
     authoritySuccess(type) {
       console.log(type);
       if (type == "login") this.isOnline = true;
+    },
+    showMsg() {
+      console.log("should show msg");
+      this.$refs.notification.newNotification();
     }
   },
   mounted() {
@@ -46,6 +51,7 @@ export default {
       this.isOnline = true;
       this.$store.commit("setUser", userInfo);
     }
+
   },
   
 }

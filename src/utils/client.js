@@ -1,3 +1,6 @@
+const DAYS_7_MS = 604800000;
+
+
 let client = {
     store(key, value) {
         if (window.localStorage) {
@@ -39,9 +42,15 @@ let client = {
     }
 }
 
-function StorageObject(data, expireTimeMS = 604800000) {    // 默认七天过期
-    this.data = data;
-    this.expireTime = new Date().getTime() + expireTimeMS;
-}
+// function StorageObject(data, expireTimeMS = DAYS_7_MS) {    // 默认七天过期
+//     this.data = data;
+//     this.expireTime = new Date().getTime() + expireTimeMS;
+// }
 
+class StorageObject {
+    constructor(data, expireTime = DAYS_7_MS) {
+        this.data = data;
+        this.expireTime = expireTime;
+    }
+}
 export default client;

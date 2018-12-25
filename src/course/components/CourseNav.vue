@@ -69,7 +69,6 @@ export default {
             padding: 20px 20px 20px 20px;
             border-radius: 20px;
             box-shadow: 0 -12px 24px rgba(7, 17, 27, 0.2), 0 12px 24px rgba(7, 17, 27, 0.2);
-            z-index: 100;
             align-self: flex-end;
             transform: translateY(20px);
             .course-learn-btn {

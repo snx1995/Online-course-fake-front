@@ -13,6 +13,7 @@ Vue.config.productionTip = false
 Vue.prototype.$fserver = server;
 Vue.prototype.$fclient = client;
 Vue.prototype.$fconfig = config;
+Vue.prototype.$fUtil = {};
 
 /* eslint-disable no-new */
 new Vue({

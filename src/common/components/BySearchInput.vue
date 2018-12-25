@@ -2,7 +2,7 @@
     <div class="by-input">
         <div class="input-wrapper">
             <input type="text" @input="$emit('input', $event.target.value)" :placeholder="placeholder">
-            <div class="search-btn icon-search1" @click="$emit('search')">
+            <div class="search-btn icon-search" @click="$emit('search')">
 
             </div>
         </div>

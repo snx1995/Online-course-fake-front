@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    
+    name: "UserSummary"
 }
 </script>
 <style lang="less" scoped>
