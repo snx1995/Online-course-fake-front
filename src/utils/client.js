@@ -42,15 +42,15 @@ let client = {
     }
 }
 
-// function StorageObject(data, expireTimeMS = DAYS_7_MS) {    // 默认七天过期
-//     this.data = data;
-//     this.expireTime = new Date().getTime() + expireTimeMS;
-// }
-
-class StorageObject {
-    constructor(data, expireTime = DAYS_7_MS) {
-        this.data = data;
-        this.expireTime = expireTime;
-    }
+function StorageObject(data, expireTimeMS = DAYS_7_MS) {    // 默认七天过期
+    this.data = data;
+    this.expireTime = new Date().getTime() + expireTimeMS;
 }
+
+// class StorageObject {
+//     constructor(data, expireTime = DAYS_7_MS) {
+//         this.data = data;
+//         this.expireTime = expireTime;
+//     }
+// }
 export default client;

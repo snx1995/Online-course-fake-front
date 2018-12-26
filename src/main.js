@@ -7,6 +7,9 @@ import store from "./store/store";
 import server from "./utils/nework";
 import client from "./utils/client";
 import config from "./config";
+import ByNotify from "./common/components/notification";
+
+Vue.use(ByNotify);
 
 Vue.config.productionTip = false
 

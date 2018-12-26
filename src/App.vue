@@ -7,7 +7,6 @@
       <home-footer />
       <IMPane />
       <LoginPane v-model="loginPanePage" v-show="showLoginPane" @close="closeLoginModal" @success="authoritySuccess($event)"/>
-      <by-notification ref="notification"/>
   </div>
 </template>
 
@@ -16,11 +15,10 @@ import HomeHeader from "./home/components/HomeHeader";
 import LoginPane from "./home/components/LoginPane";
 import IMPane from "./home/components/IMPane";
 import HomeFooter from "./home/components/HomeFooter";
-import ByNotification from "./common/components/notification/ByNotifySystem"
 
 export default {
   name: 'App',
-  components: {LoginPane, HomeHeader, IMPane, HomeFooter, ByNotification},
+  components: {LoginPane, HomeHeader, IMPane, HomeFooter},
   data() {
     return {
       loginPanePage: "login",

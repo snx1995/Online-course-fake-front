@@ -68,7 +68,13 @@ export default {
                 }
             ]
         }
-    }    
+    },
+    mounted() {
+        this.$byNotify.success("this is a succss msg", 0);
+        this.$byNotify.error("this is a error msg", 0);
+        this.$byNotify.warning("this is a warning msg", 0);
+        this.$byNotify.info("this is a info msg", 0);
+    }   
 }
 </script>
 <style lang="less" scoped>

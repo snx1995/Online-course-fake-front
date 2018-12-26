@@ -3,12 +3,15 @@
         <transition-group 
             tag="div"
             name="msgs">
+
             <by-notify v-for="(msg, index) in msgList" 
-            :key="msg.key" 
-            :duration="5000"
+            :key="msg.$key" 
+            :duration="msg.duration"
+            :type="msg.type"
             @close="closeNotify(index)">
-                <h3 @click="closeNotify(index)">{{"this is No." + index + ":" + msg.msg}}</h3>
+                <p>{{msg.msg}}</p>
             </by-notify>
+
         </transition-group>
     </div>
 </template>
@@ -24,12 +27,9 @@ export default {
         }
     },
     methods: {
-        newNotification() {
-            this.msgList.unshift({
-                type: "success",
-                msg: this.msgIndex + ": this is another msg fot test",
-                key: this.msgIndex
-            })
+        newNotification(msg) {
+            msg.$key = this.msgIndex;
+            this.msgList.unshift(msg);
             this.msgIndex ++;
         },
         closeNotify(key) {

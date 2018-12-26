@@ -87,8 +87,7 @@ export default {
         getCourseInfo(courseId, this);
     },
     mounted() {
-        console.log("emit msg");
-        this.$emit("msg");
+        
     }
 }
 
