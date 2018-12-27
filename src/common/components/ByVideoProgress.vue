@@ -57,7 +57,7 @@ export default {
         document.addEventListener("mouseup", event => {
             if ($this.slideEnabled) {
                 $this.slideEnabled = false;
-                this.$emit("progresschange", val * 100);
+                this.$emit("progresschange", val);
             }
         });
 

@@ -69,7 +69,7 @@
         alert("search" + this.keyword);
       },
       logout() {
-        this.$fclient.logout();
+        this.$fClient.logout();
       },
       userCenter() {
         this.$router.push("/userCenter")

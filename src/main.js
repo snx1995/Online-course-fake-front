@@ -6,6 +6,8 @@ import router from './router';
 import store from "./store/store";
 import server from "./utils/nework";
 import client from "./utils/client";
+import format from "./utils/date_format";
+
 import config from "./config";
 import ByNotify from "./common/components/notification";
 
@@ -13,10 +15,12 @@ Vue.use(ByNotify);
 
 Vue.config.productionTip = false
 
-Vue.prototype.$fserver = server;
-Vue.prototype.$fclient = client;
-Vue.prototype.$fconfig = config;
+Vue.prototype.$fServer = server;
+Vue.prototype.$fClient = client;
+Vue.prototype.$fConfig = config;
 Vue.prototype.$fUtil = {};
+
+Date.prototype.format = format;
 
 /* eslint-disable no-new */
 new Vue({

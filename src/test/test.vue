@@ -12,18 +12,24 @@
                 <input type="text" v-model="msg">
                 <button @click="emitMsg">emit</button>
             </li>
-            <li></li>
+            <li>
+                <by-switch v-model="switchVal"/>
+                <span>{{switchVal}}</span>
+            </li>
             <li></li>
             <li></li>
         </ul>
     </div>
 </template>
 <script>
+import BySwitch from "../common/components/BySwitch";
 export default {
+    components: {BySwitch},
     data() {
         return {
             msgType: "success",
             msg: "",
+            switchVal: "inactive"
         }
     },
     methods: {
@@ -36,8 +42,5 @@ export default {
 <style lang="less" scoped>
     .test-container {
         width: 100%;
-        ul {
-            list-style: none;
-        }
     }
 </style>

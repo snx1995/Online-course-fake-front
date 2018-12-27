@@ -32,7 +32,6 @@
 <script>
 import ByVideoProgress from "./ByVideoProgress";
 import ByCheckbox from "./ByCheckbox";
-import { callbackify, isRegExp } from 'util';
 export default {
     name: "ByVideo",
     components:{ByVideoProgress, ByCheckbox},
@@ -47,7 +46,7 @@ export default {
         },
         src: {
             type: String,
-            default: "/media/resource/sample.webm"
+            default: "/media/resource/example.mp4"
         }
     },
     data() {
@@ -93,7 +92,7 @@ export default {
             this.currentTime = "00:00";
         },
         progressChange(e) {
-            this.video.currentTime = this.video.duration * e * 100;
+            this.video.currentTime = (this.video.duration * e).toFixed(3);
         }
     },
     computed: {

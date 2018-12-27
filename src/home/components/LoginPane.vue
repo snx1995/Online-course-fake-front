@@ -84,7 +84,7 @@
         },
         login() {
           let $this = this; 
-          $this.$fserver.get("/action/authority/login.action", {
+          $this.$fServer.get("/action/authority/login.action", {
             params: {
               account: $this.account,
               password: md5($this.password, "hit-go-forward")
@@ -95,7 +95,7 @@
             if (response.status == 200) {
               user = response.data;
               this.$store.commit("setUser", response.data);
-              this.$fclient.store(this.$fconfig.LOCAL_USER_KEY, response.data);
+              this.$fClient.store(this.$fConfig.LOCAL_USER_KEY, response.data);
               this.$cookies.set("token", user.token);
               this.$emit("success", "login");
               this.$byNotify.success(`Hello ~${user.name}`);

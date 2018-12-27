@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted() {
-    let userInfo = this.$fclient.read(this.$fconfig.LOCAL_USER_KEY);
+    let userInfo = this.$fClient.read(this.$fConfig.LOCAL_USER_KEY);
     if (userInfo) {
       this.isOnline = true;
       this.$store.commit("setUser", userInfo);

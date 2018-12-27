@@ -1,11 +1,12 @@
 import Vue from "Vue";
-import ByNotification from "./BynotifySystem";
+import ByNotification from "./ByNotifySystem";
 
 const Constructor = Vue.extend(ByNotification);
 
 const instance = new Constructor();
 
 const vm = instance.$mount();
+
 document.body.appendChild(vm.$el);
 
 const notify = {

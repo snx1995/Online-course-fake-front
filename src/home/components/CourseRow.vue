@@ -2,16 +2,34 @@
     <div class="home-course-row">
         <div class="row-content">
             <h3 class="row-title">
-            {{data.title.split("").join(" / ")}}
-        </h3>
-        <div class="row-content">
-            <div class="row-item" v-for="(item, index) in data.courses" :key="index">
-                <router-link :to="'/course/7'" class="router-link">
-                    <img :src="item.src" :alt="item.alt">
-                    <p class="course-title">{{item.title}}</p>
-                </router-link>
+                {{data.title.split("").join(" / ")}}
+            </h3>
+            <div class="row-body">
+                <div class="row-item" v-for="(item, index) in data.courses" :key="index">
+                    <router-link :to="'/course/' + item.id" class="router-link">
+                        <img :src="'/media' + item.img" :title="item.intro">
+                        <p class="course-title">{{item.name}}</p>
+                    </router-link>
+                    <div>
+                        <span>
+                            <i class="icon-user-circle-o"></i>
+                            <span>{{item.teacher? item.teacher.name : "unknown"}}</span>
+                        </span>
+                        <span>
+                            <i class="icon-star-o"></i>
+                            <span>{{item.userNum}}</span>
+                        </span>
+                        <span>
+                            <span>{{item.createDate.substring(0, 10)}}</span>
+                        </span>
+                        <span>
+                            <i class="icon-heart-o"></i>
+                            <span>赞</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-        </div>
+            <h4 class="no-course" v-if="!data.courses.length">...暂无课程...</h4>
         </div>
     </div>
 </template>
@@ -32,11 +50,15 @@ export default {
         .row-content {
             width: 1200px;
             margin: 0 auto;
+            .no-course {
+                width: 100%;
+                text-align: center;
+            }
             .row-title {
                 text-align: center;
                 color: rgb(247, 72, 72);
             }
-            .row-content {
+            .row-body {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-around;
@@ -45,6 +67,15 @@ export default {
                     cursor: pointer;
                     width: 216px;
                     margin-bottom: 20px;
+                    div {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        span {
+                            color: #5d5d5d;
+                            font-size: 0.9em;
+                        }
+                    }
                     img {
                         width: 100%;
                         height: 120px;

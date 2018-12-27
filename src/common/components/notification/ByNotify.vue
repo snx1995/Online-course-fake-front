@@ -4,7 +4,7 @@
         <div class="msg-body">
             <i :class="style.icon" class="msg-icon"></i>
             <div class="content">
-                <span class="title">{{style.title}}</span>
+                <span class="title" :style="{color: style.color}">{{style.title}}</span>
                 <slot></slot>  
             </div>
         </div>
@@ -144,6 +144,7 @@ export default {
                 display: inline-block;
                 .title {
                     font-weight: bold;
+                    cursor: default;
                 }
                 
             }
