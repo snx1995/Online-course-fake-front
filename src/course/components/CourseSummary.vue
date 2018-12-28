@@ -87,7 +87,39 @@ export default {
         getCourseInfo(courseId, this);
     },
     mounted() {
-        
+        let courseId = this.$route.params.courseId;
+        this.$fServer.get("/action/course/getCourseOutlineDetail.action", {params: {courseId}})
+            .then(response => {
+                if (response.status == 200) {
+                    let outlineMap = {};
+                    if (response.data && response.data.length) {
+                        response.data.forEach(e => {
+                            if (!outlineMap[e.chapterNum]) {
+                                outlineMap[e.chapterNum] = {
+                                    chapterNum: e.chapterNum,
+                                    chapterTitle: e.chapterTitle,
+                                    sections: [
+                                        {
+                                            sectionNum: e.sectionNum,
+                                            sectionTitle: e.sectionTitle,
+                                            video: e.video,
+                                            file: e.file
+                                        }
+                                    ]
+                                }
+                            } else {
+                                outlineMap[e.chapterNum].sections.push({
+                                    sectionNum: e.sectionNum,
+                                    sectionTitle: e.sectionTitle,
+                                    video: e.video,
+                                    file: e.file
+                                })
+                            }
+                        });
+                    }
+                    this.chapters = outlineMap;
+                }
+            })
     }
 }
 

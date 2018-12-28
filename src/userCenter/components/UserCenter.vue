@@ -42,17 +42,18 @@ export default {
             return this.$store.state.userStore.user;
         },
         index() {
-            switch (this.$route.path) {
-                case "/userCenter":
-                    return 0;
-                case "/userCenter/info":
+            let path = this.$route.path;
+            switch (true) {
+                case path.startsWith("/userCenter/info"):
                     return 1;
-                case "/userCenter/course":
+                case path.startsWith("/userCenter/course"):
                     return 2;
-                case "/userCenter/blog":
+                case path.startsWith("/userCenter/blog"):
                     return 3;
-                case "/userCenter/history":
+                case path.startsWith("/userCenter/history"):
                     return 4;
+                case path.startsWith("/userCenter"):
+                    return 0;
                 default:
                     return -1;            
             }

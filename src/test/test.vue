@@ -16,20 +16,30 @@
                 <by-switch v-model="switchVal"/>
                 <span>{{switchVal}}</span>
             </li>
-            <li></li>
-            <li></li>
+            <li>
+                <select v-model="uploadType">
+                    <option value="img">img</option>
+                    <option value="userImg">userImg</option>
+                </select> 
+                <by-upload :type="uploadType"/>
+            </li>
+            <li>
+
+            </li>
         </ul>
     </div>
 </template>
 <script>
 import BySwitch from "../common/components/BySwitch";
+import ByUpload from "../common/components/ByUpload";
 export default {
-    components: {BySwitch},
+    components: {BySwitch, ByUpload},
     data() {
         return {
             msgType: "success",
             msg: "",
-            switchVal: "inactive"
+            switchVal: "inactive",
+            uploadType: "img"
         }
     },
     methods: {

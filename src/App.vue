@@ -57,6 +57,7 @@ export default {
 
 <style>
 @import url("../static/common/style.css");
+@import url("../static/common/commonStyle.css");
 #app {
   font-family: "微软雅黑", "Microsoft Ya Hei", 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

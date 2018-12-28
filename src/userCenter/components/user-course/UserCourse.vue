@@ -2,7 +2,10 @@
     <div class="user-summary">
         <div class="title">
             <h4>个人中心/我的课程</h4>
-            <button v-if="loginUser.type <= 3">新建课程</button>
+            <button v-if="loginUser.type <= 3" @click="$router.push('/userCenter/course/addNewCourse')">新建课程</button>
+        </div>
+        <div class="body">
+            <router-view />
         </div>
     </div>
 </template>
@@ -45,6 +48,9 @@ export default {
                 border-radius: 8px;
                 .borderStyle();
             }
+        }
+        .body {
+
         }
     }
 </style>

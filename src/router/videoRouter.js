@@ -1,4 +1,4 @@
 export default {
-    path: "/video/:videoUrl",
+    path: "/video",
     component: () => import ("../video/components/Video")
 }

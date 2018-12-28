@@ -1,6 +1,6 @@
 <template>
     <div class="by-video-wrapper">
-        <video :src="src" id="byVideoPlayer-vfgbty4533451" :width="width" :height="height">
+        <video :src="'/media' + src" id="byVideoPlayer-vfgbty4533451" :width="width" :height="height">
             您的浏览器不受支持，推荐使用最新版Chrome观看！
         </video>
         <div class="by-video-bottom">

@@ -12,7 +12,13 @@ export default {
         },
         {
             path: "course",
-            component: () => import("../userCenter/components/UserCourse")
+            component: () => import("../userCenter/components/user-course/UserCourse"),
+            children: [
+                {
+                    path: "addNewCourse",
+                    component: () => import("../userCenter/components/user-course/AddCourse")
+                },
+            ]
         },
         {
             path: "blog",
@@ -22,5 +28,6 @@ export default {
             path: "history",
             component: () => import("../userCenter/components/UserHistory")
         },
+        
     ]
 }

@@ -4,7 +4,7 @@
             <h2>第一章-基础知识</h2>
         </div>
         <div class="video-container">
-        <by-video />
+        <by-video :src="videoUrl"/>
         <div class="video-side-pane">
             <div class="nav">
                 <div class="nav-item">弹幕</div>
@@ -23,6 +23,9 @@ export default {
         return {
             videoUrl: "/media/resource/example2.avi"
         }
+    },
+    mounted() {
+        this.videoUrl = this.$store.state.videoStore.videoUrl;
     }
 }
 </script>
