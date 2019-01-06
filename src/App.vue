@@ -48,6 +48,7 @@ export default {
     if (userInfo) {
       this.isOnline = true;
       this.$store.commit("setUser", userInfo);
+      this.$byNotify.info("欢迎回来！" + userInfo.name);
     }
 
   },

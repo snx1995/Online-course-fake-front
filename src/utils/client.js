@@ -34,6 +34,7 @@ let client = {
     logout() {
         if (confirm("将会清除用户信息并退出登录返回主页，确认继续吗？")) {
             window.localStorage.clear();
+            $cookies.remove("token");
             window.location = "/";
         }
     },

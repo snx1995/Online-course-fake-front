@@ -98,6 +98,7 @@
               this.$fClient.store(this.$fConfig.LOCAL_USER_KEY, response.data);
               this.$cookies.set("token", user.token);
               this.$emit("success", "login");
+              this.$router.go(0);
               this.$byNotify.success(`Hello ~${user.name}`);
             } else alert(response.data);
             this.$emit("close");
