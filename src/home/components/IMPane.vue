@@ -7,7 +7,9 @@
             <div class="im-pane-containter" v-show="showModal">
                 <div class="im-pane-mask" @click="showIMPane = false"></div>
                 <div class="im-pane">
-
+                    <div class="im-header"></div>
+                    <div class="im-left"></div>
+                    <div class="im-right"></div>
                 </div>
             </div>
         </transition>
@@ -33,6 +35,11 @@ export default {
 <style lang="less" scoped>
     .im-pane {
         z-index: 1000;
+        .im-header {
+            height: 40px;
+            width: 100%;
+            background-color: rgb(244, 244, 244);
+        }
         .im-indicator {
             z-index: inherit;
             padding: 0 20px;
