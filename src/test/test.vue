@@ -24,7 +24,10 @@
                 <by-upload :type="uploadType"/>
             </li>
             <li>
-
+                <by-confirm />
+                <by-confirm />
+                <by-confirm />
+                <by-confirm />
             </li>
         </ul>
     </div>
@@ -32,8 +35,9 @@
 <script>
 import BySwitch from "../common/components/BySwitch";
 import ByUpload from "../common/components/ByUpload";
+import ByConfirm from "../common/components/modal/ByConfirm";
 export default {
-    components: {BySwitch, ByUpload},
+    components: {BySwitch, ByUpload, ByConfirm},
     data() {
         return {
             msgType: "success",

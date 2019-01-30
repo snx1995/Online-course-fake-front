@@ -24,7 +24,7 @@
                         </span>
                         <span>
                             <i class="icon-heart-o"></i>
-                            <span>赞</span>
+                            <span>0</span>
                         </span>
                     </div>
                 </div>
