@@ -80,6 +80,7 @@ export default {
     methods: {
         send() {
             const msg = this.input;
+            
             if (msg.length > 0 && msg.length <= 300) {
                 this.msgList.push({type: 'out', msg});
                 this.input = '';
@@ -203,7 +204,6 @@ export default {
                                 border-radius: 50%;
                                 margin-top: 6px;
                                 margin-left: 6px;
-
                             }
                             .im-msg {
                                 margin-left: 10px;

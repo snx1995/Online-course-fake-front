@@ -23,12 +23,14 @@
 </template>
 <script>
 import Velocity from "velocity-animate";
+import { clearInterval } from 'timers';
 export default {
     name: "ByCarousel",
     props: ["imgs"],
     data() {
         return {
-            imgIndex: 0
+            imgIndex: 0,
+            timer: -1
         }
     },
     methods: {
@@ -82,7 +84,18 @@ export default {
         }
     },
     mounted() {
-        setInterval(this.switchRight, 5000);
+        this.timer = setInterval(this.switchRight, 5000);
+        // TODO this is a test
+        // FIXME 
+        
+        // this.$el.addEventListener('mouseenter', () => {
+        //     console.log(this.timer);
+        //     clearInterval(this.timer);
+        // });
+        // this.$el.addEventListener('mouseleave', () => {
+        //     this.timer = setInterval(this.switchRight, 5000);
+        // })
+
     }
 }
 </script>
