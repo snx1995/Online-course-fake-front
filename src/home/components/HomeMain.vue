@@ -20,7 +20,7 @@ export default {
         let $this = this;
         $this.$fServer.get("/action/course/getAllCourseType.action")
             .then(response => {
-                if (response.status == 200) {
+                if (response.status == 20000) {
                     let type = response.data.filter(e => e.level == 1);
                     type.forEach(e => {
                         let courseRow = {

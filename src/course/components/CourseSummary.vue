@@ -5,6 +5,7 @@
         <div class="course-container">
             <div class="course-chapters" v-show="currPage == 1">
                 <course-chapter v-for="(chapter, index) in chapters" :key="index" :chapter="chapter" />
+                <span v-if="!chapters.length">--- 暂无章节 ---</span>
             </div>
             <course-summary-right />
         </div>
@@ -22,53 +23,7 @@ export default {
         return {
             currPage: 1,
             course: null,
-            chapters: [
-                {
-                    title: "第1章 课程介绍",
-                    intro: "本章中将会针对课程安排进行概要介绍。",
-                    sections: [
-                        {title: "1-1 课程介绍1(04：50)"},
-                        {title: "1-2 课程介绍2(04：50)"},
-                        {title: "1-3 课程介绍3(04：50)"},
-                        {title: "1-4 课程介绍4(04：50)"},
-                    ]
-                },
-                {
-                    title: "第2章 应用SpringBoot完成基础项目搭建",
-                    intro: "本章中将带领大家使用SpringBoot快速搭建一个web mvc的完整项目，并完成接入mybatis完成基础数据库的访问。",
-                    sections: [
-                        {title: "2-1 使用IDEA创建maven项目1(04：50)"},
-                        {title: "2-2 使用IDEA创建maven项目2(04：50)"},
-                        {title: "2-3 使用IDEA创建maven项目3(04：50)"},
-                        {title: "2-4 使用IDEA创建maven项目4(04：50)"},
-                        {title: "2-5 使用IDEA创建maven项目4(04：50)"},
-                        {title: "2-6 使用IDEA创建maven项目4(04：50)"},
-                        {title: "2-7 使用IDEA创建maven项目4(04：50)"},
-                        {title: "2-8 使用IDEA创建maven项目4(04：50)"},
-                        {title: "2-9 使用IDEA创建maven项目4(04：50)"},
-                    ]
-                },
-                {
-                    title: "第1章 课程介绍",
-                    intro: "本章中将会针对课程安排进行概要介绍。",
-                    sections: [
-                        {title: "1-1 课程介绍1(04：50)"},
-                        {title: "1-2 课程介绍2(04：50)"},
-                        {title: "1-3 课程介绍3(04：50)"},
-                        {title: "1-4 课程介绍4(04：50)"},
-                    ]
-                },
-                {
-                    title: "第1章 课程介绍",
-                    intro: "本章中将会针对课程安排进行概要介绍。",
-                    sections: [
-                        {title: "1-1 课程介绍1(04：50)"},
-                        {title: "1-2 课程介绍2(04：50)"},
-                        {title: "1-3 课程介绍3(04：50)"},
-                        {title: "1-4 课程介绍4(04：50)"},
-                    ]
-                }
-            ]
+            chapters: [],
         }
     },
     beforeRouteEnter (to, from, next) {
@@ -90,7 +45,7 @@ export default {
         let courseId = this.$route.params.courseId;
         this.$fServer.get("/action/course/getCourseOutlineDetail.action", {params: {courseId}})
             .then(response => {
-                if (response.status == 200) {
+                if (response.status == 20000) {
                     let outlineMap = {};
                     if (response.data && response.data.length) {
                         response.data.forEach(e => {
@@ -125,7 +80,7 @@ export default {
 
 function getCourseInfo(courseId, $this) {
     $this.$fServer.get("/action/course/getCourseById.action", {params: {courseId}}).then(response => {
-            if (response.status == 200) {
+            if (response.status == 20000) {
                 $this.course = response.data;
             } else alert(response.status + ":" + response.data);
         })
@@ -140,6 +95,14 @@ function getCourseInfo(courseId, $this) {
             display: flex;
             justify-content: space-between;
             padding-bottom: 50px;
+            .course-chapters {
+                span {
+                    margin-top: 100px;
+                    display: block;
+                    text-align: center;
+                    width: 800px;
+                }
+            }
         }
     }
 </style>

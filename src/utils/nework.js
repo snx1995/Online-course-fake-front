@@ -1,33 +1,34 @@
 import axios from 'axios';
-import toast from './notification';
+import toastr from './notification';
+import client from './client';
+import config from '../config';
 
 const STATUS_HAVE_NO_RIGHT = 403000;
 const STATUS_INVALID_PARAMS = 403001;
 const STATUS_INVALID_DATA = 403002;
 
+const server = axios;
+const user = client.read(config.LOCAL_USER_KEY);
 
+axios.interceptors.request.use(config => {
+    if (!config.params) config.params = {token: user.token};
+    else config.params.token = user.token;
+    return config;
+}, error => {
+    toastr.error("error");
+    throw error;
+});
 
-let server = new Proxy(axios, {
-    get: function (target, propKey, receiver) {
-        if (typeof target[propKey] === "function") {
-            return (...args) => {
-                let method = Reflect.get(target, propKey);
-                return method.apply(target, args).then(response => {
-                    // HTTP过滤
-                    switch (response.status) {
-                        case 200:
-                            return response.data;
-                            break;
-                        default:
-                            toast.error("请求失败：" + response.status);
-                    } 
-                })
-            }
-        }
-        return target[propKey];
+axios.interceptors.response.use(response => {
+    if (response.status >= 200 && response.status < 300) {
+        const data = response.data;
+        if (data.status >= 30000) throw new Error(data);
+        return data;
     }
-})
-
+}, error => {
+    toastr.error("error");
+    throw error;
+});
 
 
 export default server;

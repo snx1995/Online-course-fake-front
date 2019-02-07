@@ -9,7 +9,7 @@
             @leave="leave"
             @after-leave="afterLeave"> -->
             <transition-group name="fade">
-                <a v-for="(img, index) in imgs" v-if="index == imgIndex" :key="img.src" :href="img.href">
+                <a v-for="(img, index) in imgs" v-show="index == imgIndex" :key="img.src" :href="img.href">
                     <img :src="img.src" :alt="img.alt" :key="img.src">
                 </a>
             </transition-group>
@@ -17,13 +17,13 @@
         <i class="switch-handler handler-left icon-chevron-left" @click="switchLeft"></i>
         <i class="switch-handler handler-right icon-chevron-right" @click="switchRight"></i>
         <div class="index-indicators">
-            <div class="indicator" v-for="n in imgs.length" :key="n" :class="{active: imgIndex == n - 1}" @click="switchTo(n - 1)">{{n}}</div>
+            <div class="indicator" v-for="n in imgs.length" :key="n" :class="{active: imgIndex == n - 1}" @mouseenter="switchTo(n - 1)">{{n}}</div>
         </div>
     </div>
 </template>
 <script>
 import Velocity from "velocity-animate";
-import { clearInterval } from 'timers';
+import Axios from 'axios';
 export default {
     name: "ByCarousel",
     props: ["imgs"],
@@ -85,16 +85,13 @@ export default {
     },
     mounted() {
         this.timer = setInterval(this.switchRight, 5000);
-        // TODO this is a test
-        // FIXME 
         
-        // this.$el.addEventListener('mouseenter', () => {
-        //     console.log(this.timer);
-        //     clearInterval(this.timer);
-        // });
-        // this.$el.addEventListener('mouseleave', () => {
-        //     this.timer = setInterval(this.switchRight, 5000);
-        // })
+        this.$el.addEventListener('mouseenter', () => {
+            clearInterval(this.timer);
+        });
+        this.$el.addEventListener('mouseleave', () => {
+            this.timer = setInterval(this.switchRight, 5000);
+        })
 
     }
 }
@@ -128,11 +125,10 @@ export default {
             width: 36px;
             height: 36px;
             line-height: 36px;
-            border-radius: 50%;
             text-align: center;
             background-color: transparent;
             transform: translateY(-50%);
-            font-size: 1.5em;
+            font-size: 2em;
             transition: opacity 0.3s, background-color 0.3s;
             &.handler-left {
                 left: 20px;
@@ -143,7 +139,6 @@ export default {
             &:hover {
                 color: #fff;
                 opacity: 1;
-                background-color: rgba(0, 0, 0, 0.4);
             }
         }
         .index-indicators {

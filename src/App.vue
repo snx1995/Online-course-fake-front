@@ -15,6 +15,7 @@ import HomeHeader from "./home/components/HomeHeader";
 import LoginPane from "./home/components/LoginPane";
 import IMPane from "./home/components/IMPane";
 import HomeFooter from "./home/components/HomeFooter";
+import axios from "axios";
 
 export default {
   name: 'App',

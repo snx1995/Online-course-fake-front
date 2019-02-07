@@ -1,12 +1,14 @@
+import notify from '../common/components/notification/by_notification';
+
 let toast = {
     success(...msgs) {
-        alert(...msgs);
+        notify.success(msgs.join(','));
     },
     error(...msgs) {
-        alert(...msgs);
+        notify.error(msgs.join(','));
     },
     warning(...msgs) {
-        alert(...msgs);
+        notify.warning(msgs.join(','));
     }
 }
 export default toast;
