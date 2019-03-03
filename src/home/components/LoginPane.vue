@@ -92,7 +92,7 @@
           }).then(response => {
             console.log(response);
             let user;
-            if (response.status == 200) {
+            if (response.status == 20000) {
               user = response.data;
               this.$store.commit("setUser", response.data);
               this.$fClient.store(this.$fConfig.LOCAL_USER_KEY, response.data);

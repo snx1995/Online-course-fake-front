@@ -5,7 +5,7 @@
     </div>
     <div class="link-list">
       <div class="link">实战课程</div>
-      <div class="link">博客</div>
+      <div class="link"><router-link to='/blog'>博客</router-link></div>
       <div class="link">问答</div>
       <div class="link">直播</div>
       <div class="search-content">
@@ -120,6 +120,10 @@
         &:hover {
           background-color: rgb(244, 244, 244);
           color: rgb(242, 13, 13);
+        }
+        a {
+          color: inherit;
+          text-decoration: none;
         }
       }
       .search-content {

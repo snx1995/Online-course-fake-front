@@ -17,6 +17,7 @@
     "blueimp-md5": "^2.10.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "mavon-editor": "^2.6.17",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "velocity": "^0.7.2",

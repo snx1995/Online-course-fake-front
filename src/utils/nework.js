@@ -11,8 +11,10 @@ const server = axios;
 const user = client.read(config.LOCAL_USER_KEY);
 
 axios.interceptors.request.use(config => {
-    if (!config.params) config.params = {token: user.token};
-    else config.params.token = user.token;
+    if (user) {
+        if (!config.params) config.params = {token: user.token};
+        else config.params.token = user.token;
+    }
     return config;
 }, error => {
     toastr.error("error");
@@ -25,6 +27,7 @@ axios.interceptors.response.use(response => {
         if (data.status >= 30000) throw new Error(data);
         return data;
     }
+    return response;
 }, error => {
     toastr.error("error");
     throw error;

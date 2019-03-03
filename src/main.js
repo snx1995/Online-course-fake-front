@@ -9,9 +9,10 @@ import client from "./utils/client";
 
 import config from "./config";
 import ByNotify from "./common/components/notification";
-
-
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
 Vue.use(ByNotify);
+Vue.use(mavonEditor);
 
 Vue.config.productionTip = false
 
