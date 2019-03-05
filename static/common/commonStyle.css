@@ -29,3 +29,17 @@
 .by-btn:active {
     filter: brightness(1);
 }
+.by-confirm {
+    color: #fff;
+    background: rgb(248, 77, 77);
+}
+.by-cancel {
+    color: #fff;
+    background: #ccc;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s;
+}

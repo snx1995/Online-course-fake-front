@@ -4,8 +4,9 @@
             标题：<input type="text" v-model="blogTitle">
         </h1>
         <mavon-editor v-model="blog" :boxShadow="false" @save="onBlogSave"/>
-        <div class="save-dialog-container">
-            <div class="save-dialog-overlay"></div>
+        <transition name="fade">
+            <div class="save-dialog-container" v-show='showSaveDialog'>
+            <div class="save-dialog-overlay" @click="onDialogClose"></div>
             <div class="dialog-container">
                 <div class="dialog-header">
                     <span>博客发布</span>
@@ -15,7 +16,7 @@
                         <tr>
                             <td>分类:</td>
                             <td>
-                                <select v-model="fristSelectValue">
+                                <select v-model="fristSelectValue" @change='onFirstChange'>
                                     <option v-for="type in courseType" :value="type.id" :key='type.id'>
                                         {{type.name}}
                                     </option>
@@ -31,20 +32,28 @@
                         </tr>
                         <tr>
                             <td>标签:</td>
-                            <td colspan="2"><input type="text"></td>
+                            <td colspan="2">
+                                <input type="text" v-model="blogLabel">
+                                <span class="tips">输入标签，以英文逗号分隔，例如：计算机,JAVA</span>
+                            </td>
+
                         </tr>
                         <tr>
                             <td></td>
                             <td colspan="2">
-                                草稿:<input type="radio" name="operation">
-                                发布:<input type="radio" name="operation">
+                                草稿:<input type="radio" name="operation" value="draft" v-model="operation">
+                                发布:<input type="radio" name="operation" value="release" v-model="operation">
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="dialog-footer"></div>
+                <div class="dialog-footer">
+                    <div class="by-btn by-confirm" @click="onDialogConfirm">发布</div>
+                    <div class="by-btn by-cancel" @click="onDialogClose">取消</div>
+                </div>
             </div>
         </div>
+        </transition>
     </div>
 </template>
 <style lang="less" scoped>
@@ -103,18 +112,30 @@
                         padding: 10px;
                         select, input[type='text'] {
                             padding-top: 1px;
+                            box-sizing: content-box;
                             display: inline-block;
                             width: 100%;
                             box-shadow: none;
                             outline: none;
+                        }
+                        .tips {
+                            font-size: .5em;
+                            color: #888;
+                        }
+                        &:first-child {
+                            min-width: 2.5em;
                         }
                     }
                 }
             }
             .dialog-footer {
                 width: 100%;
-                height: 30px;
-                background: rgb(242, 13, 13);
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                .by-btn {
+                    margin: 10px 10px 10px 0;
+                }
             }
         }
     }
@@ -142,6 +163,7 @@
 }
 </style>
 <script>
+import axios from "axios";
 import ByInput from "../../common/components/ByInput";
 export default {
     name: "WriteBlog",
@@ -151,12 +173,37 @@ export default {
             blog: "",
             blogTitle: "",
             fristSelectValue: 1,
-            secondSelectValue: -1
+            secondSelectValue: 117,
+            showSaveDialog: false,
+            blogLabel: "",
+            operation: "release"
         }
     },
     methods: {
         onBlogSave() {
-            alert(1);
+            this.showSaveDialog = true;
+            document.body.style.overflow = "hidden";
+        },
+        onDialogClose() {
+            this.showSaveDialog = false;
+            document.body.style.overflow = "auto";
+        },
+        onDialogConfirm() {
+            const self = this;
+            axios.post("/local/blog/uploadBlog.action", JSON.stringify({
+                title: self.blogTitle,
+                type: self.secondSelectValue ? self.secondSelectValue : self.fristSelectValue,
+                label: self.blogLabel,
+                blog: self.blog
+            }), {headers: {"Content-Type": "application/json"}}).then(response => {
+                    if (response.status == 20000) self.$byNotify.success("保存成功！");
+                }).catch(err => {
+                    self.$byNotify.error("请求失败！请稍后再试!");
+                });
+        }
+        ,
+        onFirstChange() {
+            this.secondSelectValue = this.secondSelect[0]?  this.secondSelect[0].id : 0;
         }
     },
     computed: {
@@ -166,11 +213,6 @@ export default {
         secondSelect() {
             return this.secondSelectData = this.$store.state.courseStore.courseType[this.fristSelectValue].children;
         }
-    },
-    mounted() {
-        console.log(this.$store.state.courseStore.courseType);
-        console.log(this.courseTypeData);
-        console.log(this.secondSelectData);
     }
 }
 </script>
