@@ -170,12 +170,12 @@ export default {
     components: {ByInput},
     data() {
         return {
-            blog: "",
-            blogTitle: "",
+            blog: "this is a test",
+            blogTitle: "this is a test",
             fristSelectValue: 1,
             secondSelectValue: 117,
             showSaveDialog: false,
-            blogLabel: "",
+            blogLabel: "this,is,a,test",
             operation: "release"
         }
     },
@@ -190,13 +190,17 @@ export default {
         },
         onDialogConfirm() {
             const self = this;
-            axios.post("/local/blog/uploadBlog.action", JSON.stringify({
+            axios.post("/local/blog/uploadBlog.action", {
                 title: self.blogTitle,
                 type: self.secondSelectValue ? self.secondSelectValue : self.fristSelectValue,
                 label: self.blogLabel,
-                blog: self.blog
-            }), {headers: {"Content-Type": "application/json"}}).then(response => {
-                    if (response.status == 20000) self.$byNotify.success("保存成功！");
+                blog: self.blog,
+                operation: self.operation
+            }).then(response => {
+                    if (response.status == 20000) {
+                        self.$byNotify.success("保存成功！");
+                        self.onDialogClose();
+                    }
                 }).catch(err => {
                     self.$byNotify.error("请求失败！请稍后再试!");
                 });

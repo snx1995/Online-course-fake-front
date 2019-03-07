@@ -17,7 +17,7 @@ axios.interceptors.request.use(config => {
     }
     return config;
 }, error => {
-    toastr.error("error");
+    // toastr.error("error");
     throw error;
 });
 
@@ -29,7 +29,7 @@ axios.interceptors.response.use(response => {
     }
     return response;
 }, error => {
-    toastr.error("error");
+    // toastr.error("error");
     throw error;
 });
 
